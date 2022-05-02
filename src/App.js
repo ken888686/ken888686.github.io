@@ -1,4 +1,9 @@
-import Header from './components/Layout/Header';
+import Navbar from './components/Navbar';
+import About from './components/About';
+import Projects from './components/Projects';
+import Skills from './components/Skills';
+import Testimonials from './components/Testimonials';
+import Contact from './components/Contact';
 
 /**
  * App component
@@ -6,12 +11,14 @@ import Header from './components/Layout/Header';
  */
 function App() {
   return (
-    <div className="flex flex-col h-screen bg-fuchsia-600">
-      <Header />
-      <div className="bg-black grow">
-        Content
-      </div>
-    </div>
+    <main className="h-screen bg-gradient-to-b from-slate-400 to-slate-800">
+      <Navbar />
+      <About />
+      <Projects />
+      <Skills />
+      <Testimonials />
+      <Contact />
+    </main>
   );
 }
 
