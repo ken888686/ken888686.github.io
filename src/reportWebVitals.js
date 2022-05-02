@@ -1,3 +1,7 @@
+/**
+ * reportWebVitals is a function that logs the performance of the page
+ * @param {*} onPerfEntry - callback function
+ */
 const reportWebVitals = (onPerfEntry) => {
   if (onPerfEntry && onPerfEntry instanceof Function) {
     import('web-vitals').then(({

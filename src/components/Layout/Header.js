@@ -1,3 +1,7 @@
+/**
+ * Header component
+ * @returns {React.Component}
+ */
 export default function Header() {
   return (
     <div className="bg-transparent">

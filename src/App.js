@@ -1,5 +1,9 @@
-import Header from './components/UI/Header';
+import Header from './components/Layout/Header';
 
+/**
+ * App component
+ * @returns {React.Component}
+ */
 function App() {
   return (
     <div className="flex flex-col h-screen bg-fuchsia-600">
