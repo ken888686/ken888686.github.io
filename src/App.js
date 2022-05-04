@@ -11,14 +11,16 @@ import Contact from './components/Contact';
  */
 function App() {
   return (
-    <main className="h-screen bg-gradient-to-b from-slate-400 to-slate-800">
-      <Navbar />
-      <About />
+    <>
+      <div className="flex flex-col min-h-screen">
+        <Navbar />
+        <About />
+      </div>
       <Projects />
       <Skills />
       <Testimonials />
       <Contact />
-    </main>
+    </>
   );
 }
 
