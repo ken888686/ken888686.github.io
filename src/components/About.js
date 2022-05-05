@@ -48,7 +48,6 @@ export default function About(props) {
   }, []);
   */
   const { className } = props;
-  const aboutClasses = `${className} hero bg-base-200`;
 
   const title = 'Hey, I\'m Aaron.';
   const description = [
@@ -59,7 +58,7 @@ export default function About(props) {
   ];
 
   return (
-    <div className={aboutClasses}>
+    <div className={`${className} hero bg-base-200`}>
       <div className="flex-col hero-content lg:flex-row">
         <img
           src={myPhoto}
