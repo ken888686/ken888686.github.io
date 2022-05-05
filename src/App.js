@@ -1,9 +1,7 @@
 import Navbar from './components/Navbar';
 import About from './components/About';
-import Projects from './components/Projects';
 import Skills from './components/Skills';
-import Testimonials from './components/Testimonials';
-import Contact from './components/Contact';
+import 'bootstrap-icons/font/bootstrap-icons.scss';
 
 /**
  * App component
@@ -12,14 +10,11 @@ import Contact from './components/Contact';
 function App() {
   return (
     <>
-      <div className="flex flex-col min-h-screen">
+      <div className="flex flex-col">
         <Navbar />
-        <About />
+        <About className="flex-1" />
       </div>
-      <Projects />
       <Skills />
-      <Testimonials />
-      <Contact />
     </>
   );
 }

@@ -1,7 +1,7 @@
 import myPhoto from '../assets/me.jpeg';
 // import classes from './About.module.scss';
 
-export default function About() {
+export default function About(props) {
   /*
   const [frontendExperience, setFrontendExperiencedDays] = useState('');
   const [backendExperience, setBackendExperiencedDays] = useState('');
@@ -47,20 +47,18 @@ export default function About() {
     };
   }, []);
   */
-  const title = 'I\'m Aaron.';
+  const aboutClasses = `${props.className} hero bg-base-200`;
+
+  const title = 'Hey, I\'m Aaron.';
   const description = [
     {
       id: 0,
-      content: 'Web Development enthusiast.',
-    },
-    {
-      id: 1,
       content: 'Enjoys technical challenges and providing elegant coding solutions.',
     },
   ];
 
   return (
-    <div className="flex-1 hero bg-base-200">
+    <div className={aboutClasses}>
       <div className="flex-col hero-content lg:flex-row">
         <img
           src={myPhoto}
@@ -69,9 +67,9 @@ export default function About() {
         />
         <div>
           <h1 className="text-5xl font-bold">
-            Hey, there!
+            {title}
           </h1>
-          <p className="py-6 text-4xl">{title}</p>
+          <p className="py-6 text-4xl">Web Development enthusiast.</p>
           {description.map((desc) => (
             <p
               key={desc.id}

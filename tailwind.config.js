@@ -1,7 +1,4 @@
 module.exports = {
-  daisyui: {
-    themes: ['garden'],
-  },
   content: [
     './src/**/*.{js,jsx,ts,tsx}',
   ],
@@ -9,4 +6,8 @@ module.exports = {
     extend: {},
   },
   plugins: [require('daisyui')],
+  daisyui: {
+    themes: ['garden'],
+    darkTheme: 'dracula',
+  },
 };
