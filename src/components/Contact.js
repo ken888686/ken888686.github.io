@@ -1,4 +1,7 @@
 import { useState } from 'react';
+import Button from './UI/Button';
+import Input from './UI/Input';
+import TextArea from './UI/TextArea';
 
 export default function Contact() {
   const description = 'Leave your message and I\'ll get back to you soon.';
@@ -31,58 +34,45 @@ export default function Contact() {
           <form onSubmit={submitHandler} className="form-control">
             <div className="flex flex-col">
               <div className="flex flex-row gap-5">
-                <div className="w-1/2">
-                  <label htmlFor="name" className="font-medium label">
-                    Full Name:
-                  </label>
-                  <input
-                    id="name"
-                    name="name"
-                    type="text"
-                    className="w-full input input-primary"
-                    placeholder="Your Full Name"
-                    onChange={changeHandler}
-                  />
-                </div>
-                <div className="w-1/2">
-                  <label htmlFor="email" className="font-medium label">
-                    Email:
-                  </label>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    className="w-full input input-primary"
-                    placeholder="Your Email"
-                    onChange={changeHandler}
-                  />
-                </div>
-              </div>
-              <div className="flex flex-col w-full">
-                <label htmlFor="message" className="font-medium label">
-                  Message:
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  className="h-24 mb-5 textarea textarea-primary textarea-bordered"
-                  onChange={changeHandler}
+                <Input
+                  id="name"
+                  width="w-1/2"
+                  label="Full Name"
+                  name="name"
+                  type="text"
+                  changeHandler={changeHandler}
+                  placeholder="Your Full Name"
+                />
+                <Input
+                  id="email"
+                  width="w-1/2"
+                  label="Email"
+                  name="email"
+                  type="email"
+                  changeHandler={changeHandler}
+                  placeholder="Your Email"
                 />
               </div>
-              <button type="submit" className="btn btn-block btn-primary">
+              <TextArea
+                width="w-full"
+                id="message"
+                label="Message"
+                name="message"
+                changeHandler={changeHandler}
+                placeholder=""
+              />
+              <Button
+                type="submit"
+                size="btn-block"
+                color="btn-primary"
+              >
                 Submit
-              </button>
+              </Button>
             </div>
           </form>
+          {formData}
         </div>
       </div>
-      {formData && (
-      <p>
-        Name:
-        {' '}
-        {formData.name}
-      </p>
-      )}
     </div>
   );
 }

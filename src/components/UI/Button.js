@@ -1,14 +1,14 @@
 /* eslint-disable react/button-has-type */
-import classes from './Button.module.scss';
 
 export default function Button(props) {
   const {
-    type, className, onClick, disabled, children,
+    type, size, color, onClick, disabled, children,
   } = props;
+  const classSettings = `btn ${size} ${color}`;
   return (
     <button
       type={type || 'button'}
-      className={`${classes.button} ${className}`}
+      className={classSettings}
       onClick={onClick}
       disabled={disabled}
     >

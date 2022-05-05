@@ -1,6 +1,6 @@
 export default function Navbar() {
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar">
       <div className="flex-1">
         <a href="/" className="text-xl text-primary btn btn-ghost">
           Aaron

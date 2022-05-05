@@ -58,7 +58,7 @@ export default function About(props) {
   ];
 
   return (
-    <div className={`${className} hero bg-base-200`}>
+    <div className={`${className} hero`}>
       <div className="flex-col hero-content lg:flex-row">
         <img
           src={myPhoto}
