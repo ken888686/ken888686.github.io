@@ -14,7 +14,6 @@ export default function Contact() {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    console.log(formData);
   };
 
   return (
@@ -77,6 +76,13 @@ export default function Contact() {
           </form>
         </div>
       </div>
+      {formData && (
+      <p>
+        Name:
+        {' '}
+        {formData.name}
+      </p>
+      )}
     </div>
   );
 }
