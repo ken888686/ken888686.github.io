@@ -47,7 +47,8 @@ export default function About(props) {
     };
   }, []);
   */
-  const aboutClasses = `${props.className} hero bg-base-200`;
+  const { className } = props;
+  const aboutClasses = `${className} hero bg-base-200`;
 
   const title = 'Hey, I\'m Aaron.';
   const description = [
