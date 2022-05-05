@@ -17,6 +17,10 @@ export default function Contact() {
 
   const submitHandler = (event) => {
     event.preventDefault();
+    // todo: send form data to server
+    if (formData) {
+      setFormData(null);
+    }
   };
 
   return (
@@ -70,7 +74,6 @@ export default function Contact() {
               </Button>
             </div>
           </form>
-          {formData}
         </div>
       </div>
     </div>
