@@ -12,8 +12,8 @@ export default function Skills() {
         </h1>
       </div>
       <IconList list={skills.pl} />
-      <IconList list={skills.languages} />
       <IconList list={skills.frameworks} />
+      <IconList list={skills.languages} />
     </div>
   );
 }

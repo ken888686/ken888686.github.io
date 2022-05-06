@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import Button from './UI/Button';
 import Input from './UI/Input';
 import TextArea from './UI/TextArea';
@@ -7,21 +7,21 @@ export default function Contact() {
   const description = 'Leave your message and I\'ll get back to you soon.';
   const [formData, setFormData] = useState(null);
 
-  const changeHandler = (event) => {
+  const changeHandler = useCallback((event) => {
     setFormData((prev) => (
       {
         ...prev,
         [event.target.name]: event.target.value.trim(),
       }));
-  };
+  }, []);
 
-  const submitHandler = (event) => {
+  const submitHandler = useCallback((event) => {
     event.preventDefault();
     // todo: send form data to server
     if (formData) {
       setFormData(null);
     }
-  };
+  }, []);
 
   return (
     <div className="container px-5 py-5 mx-auto">
