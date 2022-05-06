@@ -14,9 +14,11 @@ import 'bootstrap-icons/font/bootstrap-icons.scss';
 function App() {
   return (
     <div className="bg-gradient-to-b from-base-100 to-base-300">
-      <div className="flex flex-col">
+      <div className="flex flex-col h-screen">
         <Navbar />
-        <About className="flex-1" />
+        <div className="flex-1">
+          <About />
+        </div>
       </div>
       {/* <Projects /> */}
       <Skills />

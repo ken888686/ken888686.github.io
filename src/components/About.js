@@ -1,7 +1,7 @@
 import myPhoto from '../assets/me.jpeg';
 // import classes from './About.module.scss';
 
-export default function About(props) {
+export default function About() {
   /*
   const [frontendExperience, setFrontendExperiencedDays] = useState('');
   const [backendExperience, setBackendExperiencedDays] = useState('');
@@ -47,7 +47,6 @@ export default function About(props) {
     };
   }, []);
   */
-  const { className } = props;
 
   const title = 'Hey, I\'m Aaron.';
   const description = [
@@ -58,14 +57,16 @@ export default function About(props) {
   ];
 
   return (
-    <div className={`${className} hero`}>
+    <div className="h-full pb-20 hero">
       <div className="flex-col hero-content lg:flex-row">
-        <img
-          src={myPhoto}
-          alt="Me hide behind flowers"
-          className="max-w-sm shadow-2xl mask mask-squircle"
-        />
-        <div>
+        <div className="w-1/2 overflow-hidden transition-all shadow-2xl  hover:shadow-none">
+          <img
+            src={myPhoto}
+            alt="Me hide behind flowers"
+            className="object-cover w-full h-full"
+          />
+        </div>
+        <div className="md:ml-5">
           <h1 className="text-5xl font-bold">
             {title}
           </h1>
