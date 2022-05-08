@@ -35,6 +35,10 @@ const skills = {
       id: 2,
       title: 'TypeScript',
     },
+    {
+      id: 3,
+      title: 'MSSQL',
+    },
   ],
   frameworks: [
     {
@@ -51,7 +55,11 @@ const skills = {
     },
     {
       id: 3,
-      title: 'Express',
+      title: 'Express.js',
+    },
+    {
+      id: 4,
+      title: 'Next.js',
     },
   ],
 };
