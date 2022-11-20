@@ -1,4 +1,3 @@
-import myPhoto from '../assets/me.jpeg';
 // import classes from './About.module.scss';
 
 export default function About() {
@@ -57,15 +56,8 @@ export default function About() {
   ];
 
   return (
-    <div className="h-full pb-20 hero">
-      <div className="flex-col hero-content lg:flex-row">
-        <div className="w-1/2 overflow-hidden transition-all shadow-2xl  hover:shadow-none">
-          <img
-            src={myPhoto}
-            alt="Me hide behind flowers"
-            className="object-cover w-full h-full"
-          />
-        </div>
+    <div className="h-full">
+      <div className="flex-col justify-center">
         <div className="md:ml-5">
           <h1 className="text-5xl font-bold">
             {title}

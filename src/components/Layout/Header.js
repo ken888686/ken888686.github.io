@@ -1,15 +1,21 @@
+import Navbar from '../Navbar';
+import About from '../About';
+import Me from '../../assets/me.jpeg';
 /**
  * Header component
  * @returns {React.Component}
  */
 export default function Header() {
   return (
-    <div className="bg-transparent">
-      <div className="container inset-x-0 top-0 p-5 mx-auto">
-        <a href="/" className="px-2 py-2 font-mono rounded-md bg-gradient-to-r from-cyan-200 to-lime-300">
-          Home
-        </a>
-        Header
+    <div
+      className="flex flex-col h-screen bg-right bg-no-repeat bg-contain"
+      style={{
+        backgroundImage: `url(${Me})`,
+      }}
+    >
+      <Navbar />
+      <div className="flex-1">
+        <About />
       </div>
     </div>
   );
