@@ -1,11 +1,11 @@
 import React from 'react';
-import Header from './components/Header';
-
-import './App.scss';
+import SongList from './components/SongList';
 
 function App() {
   return (
-    <Header />
+    <div>
+      <SongList />
+    </div>
   );
 }
 
