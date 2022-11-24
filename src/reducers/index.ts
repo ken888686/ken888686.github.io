@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import { Action, SONG_CREATOR } from '../common';
+import { Action, Song, SONG_CREATOR } from '../common';
 
 // Reducer
-const songsReducer = () => [
+const songsReducer = (): Song[] => [
   {
     title: 'Song A',
     duration: '00:10',

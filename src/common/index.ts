@@ -6,3 +6,8 @@ interface SelectSongAction {
   payload: string;
 }
 export type Action = SelectSongAction;
+
+export type Song = {
+  title: string;
+  duration: string;
+};
