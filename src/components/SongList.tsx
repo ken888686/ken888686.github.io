@@ -2,13 +2,31 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { Song } from '../common';
 
+type PropsType = {
+  songs: Song[];
+};
+
 type StateType = {
   songs: Song[];
 };
 
-class SongList extends PureComponent {
+class SongList extends PureComponent<PropsType, StateType> {
+  renderList() {
+    const { songs } = this.props;
+    return songs.map((song) => (
+      <div className="item" key={song.title}>
+        <div className="right floated content">
+          <button type="submit" className="ui button primary">
+            Select
+          </button>
+        </div>
+        <div className="content">{song.title}</div>
+      </div>
+    ));
+  }
+
   render(): React.ReactNode {
-    return <div>Song List</div>;
+    return <div className="ui divided list">{this.renderList()}</div>;
   }
 }
 
