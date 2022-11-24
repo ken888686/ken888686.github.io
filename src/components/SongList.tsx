@@ -1,9 +1,11 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
 
-class SongList extends Component {
+class SongList extends PureComponent {
   render(): React.ReactNode {
     return <div>Song List</div>;
   }
 }
 
-export default SongList;
+// connect：連接在 App 的 Provider
+export default connect()(SongList);
