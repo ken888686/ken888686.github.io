@@ -27,7 +27,8 @@
         "ts": "never",
         "tsx": "never"
       }
-    ]
+    ],
+    "import/no-extraneous-dependencies": ["warn"]
   },
   "settings": {
     "import/resolver": {
