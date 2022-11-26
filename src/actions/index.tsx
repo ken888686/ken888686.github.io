@@ -1,7 +1,7 @@
-import { Action, SONG_CREATOR } from '../common';
+import { Action, Song, SONG_CREATOR } from '../common';
 
 // Action Creator
-export const selectSong = (song: string): Action => ({
+export const selectSongAction = (song: Song): Action => ({
   // Return an Action
   type: SONG_CREATOR,
   payload: song,

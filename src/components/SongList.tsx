@@ -1,9 +1,11 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { Song } from '../common';
+import { selectSongAction } from '../actions';
 
 type PropsType = {
   songs: Song[];
+  selectSong: (song: Song) => void;
 };
 
 type StateType = {
@@ -12,11 +14,15 @@ type StateType = {
 
 class SongList extends PureComponent<PropsType, StateType> {
   renderList() {
-    const { songs } = this.props;
+    const { songs, selectSong } = this.props;
     return songs.map((song) => (
       <div className="item" key={song.title}>
         <div className="right floated content">
-          <button type="submit" className="ui button primary">
+          <button
+            type="submit"
+            className="ui button primary"
+            onClick={() => selectSong(song)}
+          >
             Select
           </button>
         </div>
@@ -36,4 +42,9 @@ const mapStateToProps = (state: StateType) => ({
 });
 
 // connect：連接在 App 的 Provider
-export default connect(mapStateToProps)(SongList);
+export default connect(
+  mapStateToProps,
+  {
+    selectSong: selectSongAction,
+  },
+)(SongList);
