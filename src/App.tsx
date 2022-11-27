@@ -1,11 +1,28 @@
 import React from 'react';
-import Header from './components/Header';
-
-import './App.scss';
+import Button from './Button';
 
 function App() {
   return (
-    <Header />
+    <>
+      <div>
+        <Button primary={false}>Primary</Button>
+      </div>
+      <div>
+        <Button>Secondary</Button>
+      </div>
+      <div>
+        <Button>Success</Button>
+      </div>
+      <div>
+        <Button>Warning</Button>
+      </div>
+      <div>
+        <Button>Danger</Button>
+      </div>
+      <div>
+        <Button>Outline</Button>
+      </div>
+    </>
   );
 }
 
