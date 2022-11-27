@@ -1,15 +1,31 @@
 import React from 'react';
 import Button from './Button';
+import { BsGoogle, BsFacebook, BsInstagram, BsLine, BsLinkedin } from 'react-icons/bs';
 
 function App() {
   return (
     <>
       <div>
-        <Button primary>Primary</Button>
-        <Button secondary>Secondary</Button>
-        <Button success>Success</Button>
-        <Button warning>Warning</Button>
-        <Button danger>Danger</Button>
+        <Button primary onClick={() => console.log('Google')}>
+          <BsGoogle />
+          Primary
+        </Button>
+        <Button secondary onMouseLeave={() => console.log('Mouse')}>
+          <BsFacebook />
+          Secondary
+        </Button>
+        <Button success>
+          <BsInstagram />
+          Success
+        </Button>
+        <Button warning>
+          <BsLine />
+          Warning
+        </Button>
+        <Button danger>
+          <BsLinkedin />
+          Danger
+        </Button>
       </div>
       <div>
         <Button primary outline>

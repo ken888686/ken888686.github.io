@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { MouseEventHandler, ReactNode } from 'react';
 import className from 'classnames';
 
 interface Props {
@@ -13,9 +13,10 @@ interface Props {
 }
 
 const Button = (props: Props) => {
-  const { primary, secondary, success, warning, danger, outline, rounded, children } = props;
+  const { primary, secondary, success, warning, danger, outline, rounded, children, ...rest } =
+    props;
 
-  const classes = className('px-3 py-1.5 border', {
+  const classes = className('flex item-center px-3 py-1.5 border', {
     'border-blue-500 bg-blue-500 text-white': primary,
     'border-gray-900 bg-gray-900 text-white': secondary,
     'border-green-500 bg-green-500 text-white': success,
@@ -31,7 +32,7 @@ const Button = (props: Props) => {
   });
 
   return (
-    <button type='submit' className={classes}>
+    <button type='submit' className={classes} {...rest}>
       {children}
     </button>
   );
