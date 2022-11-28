@@ -1,8 +1,8 @@
 import React from 'react';
-import ButtonPage from './pages/ButtonPage';
+import Day01 from './pages/50-days/Day01';
 
 function App() {
-  return <ButtonPage />;
+  return <Day01 />;
 }
 
 export default App;
