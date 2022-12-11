@@ -1,18 +1,8 @@
 import React, { useState, useTransition } from 'react';
-import {
-  IoChevronDown,
-  IoChevronDownCircle,
-  IoMailOutline,
-  IoPhonePortraitOutline,
-  IoCalendarOutline,
-  IoLocationOutline,
-  IoLogoFacebook,
-  IoLogoTwitter,
-  IoLogoInstagram,
-} from 'react-icons/io5';
+import { IoChevronDown } from 'react-icons/io5';
 import ContactList from './ContactList';
+import SocialList from './SocialList';
 import Separator from './Separator';
-import ContactInfo from './ContactInfo';
 
 const Sidebar = () => {
   const [isPending, startTransition] = useTransition();
@@ -64,26 +54,7 @@ const Sidebar = () => {
         <Separator />
         <ContactList />
         <Separator />
-
-        <ul className='social-list'>
-          <li className='social-item'>
-            <a href='#' className='social-link'>
-              <IoLogoFacebook />
-            </a>
-          </li>
-
-          <li className='social-item'>
-            <a href='#' className='social-link'>
-              <IoLogoTwitter />
-            </a>
-          </li>
-
-          <li className='social-item'>
-            <a href='#' className='social-link'>
-              <IoLogoInstagram />
-            </a>
-          </li>
-        </ul>
+        <SocialList />
       </div>
     </aside>
   );
