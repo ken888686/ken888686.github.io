@@ -1,11 +1,11 @@
 import React from 'react';
-import Header from './components/Header';
-
-import './App.scss';
+import Sidebar from './components/Sidebar';
 
 function App() {
   return (
-    <Header />
+    <main className='container mx-auto px-2 pt-3'>
+      <Sidebar />
+    </main>
   );
 }
 
