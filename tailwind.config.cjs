@@ -78,10 +78,6 @@ module.exports = {
       textColor: {
         '--text-gradient-yellow': `linear-gradient(to right, hsl(45, 100%, 72%), hsl(35, 100%, 68%))`,
       },
-      transitionProperty: {
-        '--transition-1': `0.25s ease`,
-        '--transition-2': `0.5s ease-in-out`,
-      },
     },
   },
   plugins: [],

@@ -18,7 +18,7 @@ const Sidebar = () => {
     <aside
       className={`z-10 mb-4
       ${showMore ? 'max-h-96' : 'max-h-28'}
-      overflow-hidden rounded-2xl border -border--jet -bg--eerie-black-2 p-4 -text--white-2 -shadow--shadow-1 transition-all duration-500 ease-in-out`}
+      overflow-hidden rounded-2xl border -border--jet -bg--eerie-black-2 p-4 -text--white-2 -shadow--shadow-1 duration-500 ease-in-out`}
     >
       <div className='relative flex items-center justify-start gap-4'>
         <figure className='rounded-3xl -bg--bg-gradient-onyx'>
@@ -38,7 +38,7 @@ const Sidebar = () => {
         </div>
 
         <button
-          className='info_more-btn absolute -top-4 -right-3.5 z-10 rounded-tl-none rounded-bl-2xl -bg--border-gradient-onyx p-2 -text--fs-7 -text--orange-yellow-crayola -shadow--shadow-2 -transition--transition-1 before:absolute before:inset-px before:-z-10 before:-bg--bg-gradient-jet before:-transition--transition-1 hover:-bg--bg-gradient-yellow-1 hover:before:-bg--bg-gradient-yellow-2'
+          className='info_more-btn absolute -top-4 -right-3.5 z-10 rounded-tl-none rounded-bl-2xl -bg--border-gradient-onyx p-2 -text--fs-7 -text--orange-yellow-crayola -shadow--shadow-2 duration-[250] ease-in-out before:absolute before:inset-px before:-z-10 before:-bg--bg-gradient-jet before:duration-[250] before:ease-in-out hover:-bg--bg-gradient-yellow-1 hover:before:-bg--bg-gradient-yellow-2'
           onClick={handleClick}
         >
           <span className='hidden'>Show Contacts</span>
@@ -49,7 +49,7 @@ const Sidebar = () => {
       <div
         className={`
         ${showMore ? 'opacity-1 visible' : 'invisible opacity-0'}
-        transition-all duration-500 ease-in-out`}
+        duration-500 ease-in-out`}
       >
         <Separator />
         <ContactList />
