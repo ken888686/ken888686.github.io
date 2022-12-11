@@ -1,8 +1,12 @@
 import React from 'react';
-import ButtonPage from './pages/ButtonPage';
+import Sidebar from './components/Sidebar';
 
 function App() {
-  return <ButtonPage />;
+  return (
+    <main className='container mx-auto px-2 pt-3'>
+      <Sidebar />
+    </main>
+  );
 }
 
 export default App;
