@@ -17,8 +17,8 @@ const Sidebar = () => {
   return (
     <aside
       className={`z-10 mb-4
-      ${showMore ? 'max-h-fit' : 'max-h-28'}
-      overflow-hidden rounded-2xl border -border--jet -bg--eerie-black-2 p-4 -text--white-2 -shadow--shadow-1`}
+      ${showMore ? 'max-h-96' : 'max-h-28'}
+      overflow-hidden rounded-2xl border -border--jet -bg--eerie-black-2 p-4 -text--white-2 -shadow--shadow-1 transition-all duration-500 ease-in-out`}
     >
       <div className='relative flex items-center justify-start gap-4'>
         <figure className='rounded-3xl -bg--bg-gradient-onyx'>
@@ -49,7 +49,7 @@ const Sidebar = () => {
       <div
         className={`
         ${showMore ? 'opacity-1 visible' : 'invisible opacity-0'}
-        -transition--transition-2`}
+        transition-all duration-500 ease-in-out`}
       >
         <Separator />
         <ContactList />
