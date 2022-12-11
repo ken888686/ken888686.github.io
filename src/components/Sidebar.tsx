@@ -29,7 +29,7 @@ const Sidebar = () => {
     >
       <div className='relative flex items-center justify-start gap-4'>
         <figure className='rounded-3xl -bg--bg-gradient-onyx'>
-          <img src='/public/images/my-avatar.png' alt='Yung Chun Tu' width='80' />
+          <img src='/images/my-avatar.png' alt='Yung Chun Tu' width='80' />
         </figure>
 
         <div className=''>
