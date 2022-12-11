@@ -10,6 +10,9 @@ import {
   IoLogoTwitter,
   IoLogoInstagram,
 } from 'react-icons/io5';
+import ContactList from './ContactList';
+import Separator from './Separator';
+import ContactInfo from './ContactInfo';
 
 const Sidebar = () => {
   const [isPending, startTransition] = useTransition();
@@ -25,7 +28,7 @@ const Sidebar = () => {
     <aside
       className={`z-10 mb-4
       ${showMore ? 'max-h-fit' : 'max-h-28'}
-       overflow-hidden rounded-2xl border -border--jet -bg--eerie-black-2 p-4 -text--white-2 -shadow--shadow-1`}
+      overflow-hidden rounded-2xl border -border--jet -bg--eerie-black-2 p-4 -text--white-2 -shadow--shadow-1`}
     >
       <div className='relative flex items-center justify-start gap-4'>
         <figure className='rounded-3xl -bg--bg-gradient-onyx'>
@@ -58,55 +61,9 @@ const Sidebar = () => {
         ${showMore ? 'opacity-1 visible' : 'invisible opacity-0'}
         -transition--transition-2`}
       >
-        <div className='my-3 h-0.5 w-full -bg--jet'></div>
-        <ul className='grid grid-cols-1 gap-4'>
-          <li className='flex min-w-full items-center gap-4'>
-            <div className='relative z-10 flex h-7 w-7 items-center justify-center rounded-lg -bg--border-gradient-onyx -text--orange-yellow-crayola -shadow--shadow-1 before:absolute before:inset-1 before:-z-10 before:-bg--eerie-black-1'>
-              <IoMailOutline />
-            </div>
-            <div className='contact-info'>
-              <p className='contact-title'>Email</p>
-              <a href='mailto:ken888686@gmail.com' className='contact-link'>
-                ken888686@gmail.com
-              </a>
-            </div>
-          </li>
-          {/*
-          <li className='contact-item'>
-            <div className='icon-box'>
-              <IoPhonePortraitOutline />
-            </div>
-            <div className='contact-info'>
-              <p className='contact-title'>Phone</p>
-              <a href='tel:+12133522795' className='contact-link'>
-                +1 (213) 352-2795
-              </a>
-            </div>
-          </li>
-
-          <li className='contact-item'>
-            <div className='icon-box'>
-              <IoCalendarOutline />
-            </div>
-            <div className='contact-info'>
-              <p className='contact-title'>Birthday</p>
-              <time dateTime='1982-06-23'>June 23, 1982</time>
-            </div>
-          </li>
-
-          <li className='contact-item'>
-            <div className='icon-box'>
-              <IoLocationOutline />
-            </div>
-            <div className='contact-info'>
-              <p className='contact-title'>Location</p>
-              <address>Sacramento, California, USA</address>
-            </div>
-          </li>
-          */}
-        </ul>
-
-        <div className='separator'></div>
+        <Separator />
+        <ContactList />
+        <Separator />
 
         <ul className='social-list'>
           <li className='social-item'>
