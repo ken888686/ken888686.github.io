@@ -12,7 +12,7 @@ const contactInfo: { id: number; title: string; icon: JSX.Element; element: JSX.
     title: 'Email',
     icon: <IoMailOutline />,
     element: (
-      <a href='mailto:ken888686@gmail.com' className='-text--fs-7 -text--white-2'>
+      <a href='mailto:ken888686@gmail.com' className='text-sm -text--white-2'>
         ken888686@gmail.com
       </a>
     ),
@@ -22,7 +22,7 @@ const contactInfo: { id: number; title: string; icon: JSX.Element; element: JSX.
     title: 'Phone',
     icon: <IoPhonePortraitOutline />,
     element: (
-      <a href='tel:+8180-7366-1993' className='-text--fs-7 -text--white-2'>
+      <a href='tel:+8180-7366-1993' className='text-sm -text--white-2'>
         +81 (80) 7366-1993
       </a>
     ),
@@ -32,7 +32,7 @@ const contactInfo: { id: number; title: string; icon: JSX.Element; element: JSX.
     title: 'Birthday',
     icon: <IoCalendarOutline />,
     element: (
-      <time dateTime='1993-09-03' className='-text--fs-7 -text--white-2'>
+      <time dateTime='1993-09-03' className='text-sm -text--white-2'>
         Sep 03, 1993
       </time>
     ),
@@ -41,7 +41,7 @@ const contactInfo: { id: number; title: string; icon: JSX.Element; element: JSX.
     id: 4,
     title: 'Location',
     icon: <IoLocationOutline />,
-    element: <address className='-text--fs-7 not-italic -text--white-2'>Tokyo, Japan</address>,
+    element: <address className='text-sm not-italic -text--white-2'>Tokyo, Japan</address>,
   },
 ];
 

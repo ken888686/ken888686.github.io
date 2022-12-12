@@ -21,25 +21,24 @@ const Sidebar = () => {
       overflow-hidden rounded-2xl border -border--jet -bg--eerie-black-2 p-4 -text--white-2 -shadow--shadow-1 duration-500 ease-in-out`}
     >
       <div className='relative flex items-center justify-start gap-4'>
-        <figure className='rounded-3xl -bg--bg-gradient-onyx'>
+        <figure className='rounded-3xl -bg--gradient-onyx'>
           <img src='/images/my-avatar.png' alt='Yung Chun Tu' width='80' />
         </figure>
-
         <div className=''>
           <h1
-            className='name mb-2 -text--fs-3 -font--fw-500 -tracking-wide -text--white-2'
+            className='name mb-2 text-lg font-medium -tracking-wide -text--white-2'
             title='Yung Chun Tu'
           >
-            Yung Chun Tu
+            <span className='-from--test bg-gradient-to-r -to--eerie-black-1'>Yung Chun Tu</span>
           </h1>
-          <p className='w-max rounded-lg -bg--onyx px-3 py-2 -text--fs-7 -font--fw-300 -text--white-1'>
+          <p className='w-max rounded-lg -bg--onyx px-3 py-2 text-xs font-light -text--white-1'>
             Backend Engineer
           </p>
         </div>
-
         <button
-          className='info_more-btn absolute -top-4 -right-3.5 z-10 rounded-tl-none rounded-bl-2xl -bg--border-gradient-onyx p-2 -text--fs-7 -text--orange-yellow-crayola -shadow--shadow-2 duration-[250] ease-in-out before:absolute before:inset-px before:-z-10 before:-bg--bg-gradient-jet before:duration-[250] before:ease-in-out hover:-bg--bg-gradient-yellow-1 hover:before:-bg--bg-gradient-yellow-2'
+          className='absolute -top-4 -right-4 z-10 rounded-tr-xl rounded-bl-xl -bg--gradient-onyx p-3 text-lg -text--orange-yellow-crayola -shadow--shadow-2 transition-all before:absolute before:inset-[1px] before:-z-10 before:rounded-[inherit] before:transition-all hover:-text--eerie-black-1 before:hover:-bg--orange-yellow-crayola'
           onClick={handleClick}
+          type='button'
         >
           <span className='hidden'>Show Contacts</span>
           <IoChevronDown />
