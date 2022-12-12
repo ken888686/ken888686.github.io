@@ -4,36 +4,13 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        '--bg-gradient-onyx': `linear-gradient(to bottom right, hsl(240, 1%, 25%) 3%, hsl(0, 0%, 19%) 97%)`,
-        '--bg-gradient-jet': `linear-gradient(
-          to bottom right,
-          hsla(240, 1%, 18%, 0.251) 0%,
-          hsla(240, 2%, 11%, 0) 100%
-        ),
-        hsl(240, 2%, 13%)`,
-        '--bg-gradient-yellow-1': `linear-gradient(
-          to bottom right,
-          hsl(45, 100%, 71%) 0%,
-          hsla(36, 100%, 69%, 0) 50%
-        )`,
-        '--bg-gradient-yellow-2': `linear-gradient(
-            135deg,
-            hsla(45, 100%, 71%, 0.251) 0%,
-            hsla(35, 100%, 68%, 0) 59.86%
-          ),
-          hsl(240, 2%, 13%)`,
-        '--border-gradient-onyx': `linear-gradient(
-            to bottom right,
-            hsl(0, 0%, 25%) 0%,
-            hsla(0, 0%, 25%, 0) 50%
-          )`,
+        '--gradient-onyx': `linear-gradient(to bottom right, hsl(240, 1%, 25%) 3%, hsl(0, 0%, 19%) 97%)`,
+        '--gradient-jet': `linear-gradient(to bottom right, hsla(240, 1%, 18%, 0.251) 0%, hsla(240, 2%, 11%, 0) 100%)`,
+        '--gradient-yellow-1': `linear-gradient(to bottom right, hsl(45, 100%, 71%) 0%, hsla(36, 100%, 69%, 0) 50%)`,
+        '--gradient-yellow-2': `linear-gradient(135deg, hsla(45, 100%, 71%, 0.251) 0%, hsla(35, 100%, 68%, 0) 59.86%)`,
       },
       borderColor: {
-        '--border-gradient-onyx': `linear-gradient(
-          to bottom right,
-          hsl(0, 0%, 25%) 0%,
-          hsla(0, 0%, 25%, 0) 50%
-        )`,
+        '--gradient-onyx': `linear-gradient(to bottom right, hsl(0, 0%, 25%) 0%, hsla(0, 0%, 25%, 0) 50%)`,
       },
       boxShadow: {
         '--shadow-1': `-4px 8px 24px hsla(0, 0%, 0%, 0.25)`,
@@ -69,18 +46,8 @@ module.exports = {
         '--fs-7': '13px',
         '--fs-8': '11px',
       },
-      fontWeight: {
-        '--fw-300': 300,
-        '--fw-400': 400,
-        '--fw-500': 500,
-        '--fw-600': 600,
-      },
       textColor: {
         '--text-gradient-yellow': `linear-gradient(to right, hsl(45, 100%, 72%), hsl(35, 100%, 68%))`,
-      },
-      transitionProperty: {
-        '--transition-1': `0.25s ease`,
-        '--transition-2': `0.5s ease-in-out`,
       },
     },
   },
