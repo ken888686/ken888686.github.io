@@ -6,6 +6,7 @@ module.exports = {
       backgroundImage: {
         '--gradient-onyx': `linear-gradient(to bottom right, hsl(240, 1%, 25%) 3%, hsl(0, 0%, 19%) 97%)`,
         '--gradient-jet': `linear-gradient(to bottom right, hsla(240, 1%, 18%, 0.251) 0%, hsla(240, 2%, 11%, 0) 100%)`,
+        '--gradient-yellow': `linear-gradient(to right, hsl(45, 100%, 72%), hsl(35, 100%, 68%))`,
         '--gradient-yellow-1': `linear-gradient(to bottom right, hsl(45, 100%, 71%) 0%, hsla(36, 100%, 69%, 0) 50%)`,
         '--gradient-yellow-2': `linear-gradient(135deg, hsla(45, 100%, 71%, 0.251) 0%, hsla(35, 100%, 68%, 0) 59.86%)`,
       },
@@ -13,11 +14,11 @@ module.exports = {
         '--gradient-onyx': `linear-gradient(to bottom right, hsl(0, 0%, 25%) 0%, hsla(0, 0%, 25%, 0) 50%)`,
       },
       boxShadow: {
-        '--shadow-1': `-4px 8px 24px hsla(0, 0%, 0%, 0.25)`,
-        '--shadow-2': `0 16px 30px hsla(0, 0%, 0%, 0.25)`,
-        '--shadow-3': `0 16px 40px hsla(0, 0%, 0%, 0.25)`,
-        '--shadow-4': `0 25px 50px hsla(0, 0%, 0%, 0.15)`,
-        '--shadow-5': `0 24px 80px hsla(0, 0%, 0%, 0.25)`,
+        1: `-4px 8px 24px hsla(0, 0%, 0%, 0.25)`,
+        2: `0 16px 30px hsla(0, 0%, 0%, 0.25)`,
+        3: `0 16px 40px hsla(0, 0%, 0%, 0.25)`,
+        4: `0 25px 50px hsla(0, 0%, 0%, 0.15)`,
+        5: `0 24px 80px hsla(0, 0%, 0%, 0.25)`,
       },
       colors: {
         '--jet': 'hsl(0, 0%, 22%)',
@@ -47,7 +48,7 @@ module.exports = {
         '--fs-8': '11px',
       },
       textColor: {
-        '--text-gradient-yellow': `linear-gradient(to right, hsl(45, 100%, 72%), hsl(35, 100%, 68%))`,
+        '--gradient-yellow': `linear-gradient(to right, hsl(45, 100%, 72%), hsl(35, 100%, 68%))`,
       },
     },
   },

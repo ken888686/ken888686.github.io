@@ -18,7 +18,7 @@ const Sidebar = () => {
     <aside
       className={`z-10 mb-4
       ${showMore ? 'max-h-96' : 'max-h-28'}
-      overflow-hidden rounded-2xl border -border--jet -bg--eerie-black-2 p-4 -text--white-2 -shadow--shadow-1 duration-500 ease-in-out`}
+      overflow-hidden rounded-2xl border -border--jet -bg--eerie-black-2 p-4 -text--white-2 shadow-1 duration-500 ease-in-out`}
     >
       <div className='relative flex items-center justify-start gap-4'>
         <figure className='rounded-3xl -bg--gradient-onyx'>
@@ -36,7 +36,7 @@ const Sidebar = () => {
           </p>
         </div>
         <button
-          className='absolute -top-4 -right-4 z-10 rounded-tr-xl rounded-bl-xl -bg--gradient-onyx p-3 text-lg -text--orange-yellow-crayola -shadow--shadow-2 transition-all before:absolute before:inset-[1px] before:-z-10 before:rounded-[inherit] before:transition-all hover:-text--eerie-black-1 before:hover:-bg--orange-yellow-crayola'
+          className='absolute -top-4 -right-4 z-10 rounded-tr-xl rounded-bl-xl -bg--gradient-onyx p-3 text-lg -text--orange-yellow-crayola shadow-2 transition-all before:absolute before:inset-[1px] before:-z-10 before:rounded-[inherit] before:transition-all hover:-text--eerie-black-1 before:hover:-bg--orange-yellow-crayola'
           onClick={handleClick}
           type='button'
         >
