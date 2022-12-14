@@ -3,7 +3,20 @@
 @tailwind utilities;
 
 @layer base {
+  ::selection {
+    @apply -bg--orange-yellow-crayola;
+    @apply -text--smoky-black;
+  }
+
+  :focus {
+    @apply -outline--orange-yellow-crayola;
+  }
+
   html {
+    @apply font-sans;
+  }
+
+  body {
     @apply -bg--smoky-black;
   }
 }
