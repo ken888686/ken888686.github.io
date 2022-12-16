@@ -31,9 +31,14 @@ const Sidebar = () => {
           >
             <span className='-from--test bg-gradient-to-r -to--eerie-black-1'>Yung Chun Tu</span>
           </h1>
-          <p className='w-max rounded-lg -bg--onyx px-3 py-2 text-xs font-light -text--white-1'>
-            Backend Engineer
-          </p>
+          <div className='flex gap-2'>
+            <p className='w-max rounded-lg -bg--onyx px-3 py-2 text-xs font-light -text--white-1'>
+              C# Developer
+            </p>
+            <p className='w-max rounded-lg -bg--onyx px-3 py-2 text-xs font-light -text--white-1'>
+              Backend Engineer
+            </p>
+          </div>
         </div>
         <button
           className='absolute -top-4 -right-4 z-10 rounded-tr-xl rounded-bl-xl -bg--gradient-onyx p-3 text-lg -text--orange-yellow-crayola shadow-2 transition-all before:absolute before:inset-[1px] before:-z-10 before:rounded-[inherit] before:transition-all hover:-text--eerie-black-1 before:hover:-bg--orange-yellow-crayola'
