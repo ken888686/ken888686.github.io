@@ -7,11 +7,11 @@ import TimelineList from './TimelineList';
 function Timeline({
   title,
   icon = <IoBookOutline />,
-  experience,
+  experienceList,
 }: {
   title: string;
   icon?: JSX.Element;
-  experience: experience[];
+  experienceList: experience[];
 }) {
   return (
     <section className='mb-8'>
@@ -19,7 +19,7 @@ function Timeline({
         <IconBox>{icon}</IconBox>
         <h3 className='text-xl font-bold'>{title}</h3>
       </div>
-      <TimelineList experience={experience} />
+      <TimelineList experienceList={experienceList} />
     </section>
   );
 }
