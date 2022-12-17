@@ -8,7 +8,7 @@ function About() {
       <Header>About me</Header>
       <section className='text-6 font-light leading-relaxed -text--light-gray'>
         <p className='mb-4'>
-          I'm Backend Engineer from Chiayi, Taiwan. Enjoys technical challenges and providing
+          I&apos;m Backend Engineer from Chiayi, Taiwan. Enjoys technical challenges and providing
           elegant coding solutions.
         </p>
       </section>
