@@ -8,7 +8,7 @@ import Tag from '../Common/Tag';
 
 const Sidebar = () => {
   const [isPending, startTransition] = useTransition();
-  const [showMore, setShowMore] = useState(true);
+  const [showMore, setShowMore] = useState(false);
 
   const handleClick = () => {
     startTransition(() => {
