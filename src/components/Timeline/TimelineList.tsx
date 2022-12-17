@@ -2,8 +2,8 @@ import React from 'react';
 import TimelineItem from './TimelineItem';
 import experience from '../../models/experience';
 
-function TimelineList({ experience }: { experience: experience[] }) {
-  const renderList = [...experience].reverse().map((x) => {
+function TimelineList({ experienceList }: { experienceList: experience[] }) {
+  const renderList = [...experienceList].reverse().map((x) => {
     return <TimelineItem key={x.id} experience={x} />;
   });
 

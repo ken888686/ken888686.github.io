@@ -47,7 +47,7 @@ function Resume() {
   return (
     <Article className=''>
       <Header className={'mb-7'}>Resume</Header>
-      <Timeline title='Career' experience={careerList} />
+      <Timeline title='Career' experienceList={careerList} />
       {/* <Timeline title='Education' /> */}
     </Article>
   );
