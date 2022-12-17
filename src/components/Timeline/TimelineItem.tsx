@@ -12,7 +12,10 @@ function TimelineItem({ experience }: { experience: experience }) {
         <span className='-text--light-gray-70'>{title}</span>
       </div>
       <span className='leading-relaxed -text--vegas-gold'>
-        {moment(start).format('yyyy/MM/DD')} - {moment(end).format('yyyy/MM/DD')}
+        {moment(start).format('yyyy/MM/DD')} -{' '}
+        {moment(end).format('yyyy/MM/DD') === moment().format('yyyy/MM/DD')
+          ? 'Present'
+          : moment(end).format('yyyy/MM/DD')}
       </span>
       <p className=''>{description}</p>
     </li>
