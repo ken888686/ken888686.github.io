@@ -1,6 +1,6 @@
 import React from 'react';
 import { IoLogoFacebook, IoLogoInstagram, IoLogoLinkedin, IoLogoGithub } from 'react-icons/io5';
-import SocialInfo from './SocialInfo';
+import SocialInfo from '../SocialInfo';
 
 const socialInfo = [
   {

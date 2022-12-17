@@ -2,11 +2,11 @@ import React from 'react';
 import NavbarLink from './NavbarLink';
 
 const navList = [
-  { id: 0, title: 'About', link: '' },
-  { id: 1, title: 'Resume', link: '' },
-  { id: 2, title: 'Portfolio', link: '' },
-  { id: 3, title: 'Blog', link: '' },
-  { id: 4, title: 'Contact', link: '' },
+  { id: 0, title: 'About', link: '/' },
+  { id: 1, title: 'Resume', link: '/resume' },
+  { id: 2, title: 'Portfolio', link: '/' },
+  { id: 3, title: 'Blog', link: '/' },
+  { id: 4, title: 'Contact', link: '/' },
 ];
 
 function NavbarList() {

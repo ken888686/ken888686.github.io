@@ -1,5 +1,4 @@
 import React from 'react';
-import NavbarLink from './NavbarLink';
 import NavbarList from './NavbarList';
 
 function Navbar() {

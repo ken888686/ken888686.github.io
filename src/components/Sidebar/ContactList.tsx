@@ -5,7 +5,7 @@ import {
   IoCalendarOutline,
   IoLocationOutline,
 } from 'react-icons/io5';
-import ContactInfo from './ContactInfo';
+import ContactInfo from '../ContactInfo';
 const contactInfo: { id: number; title: string; icon: JSX.Element; element: JSX.Element }[] = [
   {
     id: 1,

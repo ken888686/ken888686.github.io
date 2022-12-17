@@ -1,5 +1,5 @@
 import React from 'react';
-import IconBox from './IconBox';
+import IconBox from './Common/IconBox';
 
 function ContactInfo({
   id,
