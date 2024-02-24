@@ -1,5 +1,5 @@
 import moment from 'moment';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Article from '../components/Article/Article';
 import Header from '../components/Article/Header';
 

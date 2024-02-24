@@ -1,4 +1,3 @@
-import React from 'react';
 import Article from '../components/Article/Article';
 import Header from '../components/Article/Header';
 import Timeline from '../components/Timeline/Timeline';
@@ -34,10 +33,19 @@ const careerList: experience[] = [
   },
   {
     id: 3,
-    company: 'TEKsystems at AppleQuality',
+    company: 'Apple Inc. (TEKsystems)',
     title: 'Siri Language QA Engineer',
     type: 'Contract',
     start: new Date('2022-08-25'),
+    end: new Date('2023-05-08'),
+    description: '',
+  },
+  {
+    id: 4,
+    company: 'Rakuten (Michael Page)',
+    title: 'Application Engineer',
+    type: 'Contract',
+    start: new Date('2023-05-08'),
     end: new Date(),
     description: '',
   },
