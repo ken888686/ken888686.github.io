@@ -1,10 +1,10 @@
-import React, { useState, useTransition } from 'react';
+import { useState, useTransition } from 'react';
 import { IoChevronDown, IoChevronUp } from 'react-icons/io5';
+import Separator from '../Common/Separator';
+import Tag from '../Common/Tag';
+import Avatar from './Avatar';
 import ContactList from './ContactList';
 import SocialList from './SocialList';
-import Separator from '../Common/Separator';
-import Avatar from './Avatar';
-import Tag from '../Common/Tag';
 
 const Sidebar = () => {
   const [isPending, startTransition] = useTransition();
@@ -30,6 +30,7 @@ const Sidebar = () => {
           </h1>
           <div className='flex gap-2'>
             <Tag title='C# Developer' />
+            <Tag title='.NET Developer' />
             <Tag title='Backend Engineer' />
           </div>
         </div>

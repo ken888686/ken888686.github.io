@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 function IconBox({ children }: { children: ReactNode }) {
   return (

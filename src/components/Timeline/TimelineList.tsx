@@ -1,6 +1,5 @@
-import React from 'react';
-import TimelineItem from './TimelineItem';
 import experience from '../../models/experience';
+import TimelineItem from './TimelineItem';
 
 function TimelineList({ experienceList }: { experienceList: experience[] }) {
   const renderList = [...experienceList].reverse().map((x) => {
