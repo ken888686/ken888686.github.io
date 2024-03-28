@@ -1,3 +1,13 @@
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
 # Logs
 logs
 *.log
@@ -7,9 +17,16 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# dependencies
 node_modules
+/.pnp
+.pnp.js
+.yarn/install-state.gz
 dist
 dist-ssr
+
+# local env files
+.env
 *.local
 
 # Editor directories and files
@@ -22,3 +39,12 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+.DS_Store
+*.pem
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
