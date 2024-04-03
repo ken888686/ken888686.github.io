@@ -1,4 +1,3 @@
-"use client";
 import logo from "@/public/Logo.svg";
 import Image from "next/image";
 import Link from "next/link";
@@ -12,29 +11,39 @@ const headers = [
 
 export default function Navbar() {
   const headerRender = headers.map((x) => (
-    <li key={x.id} className="relative rounded-full px-5 py-2">
-      <Link href="#">{x.name}</Link>
+    <li key={x.id} className="h-full">
+      <Link
+        href="#"
+        className="block h-full px-3 py-7 transition-all hover:-translate-y-1 hover:drop-shadow-lg"
+      >
+        {x.name}
+      </Link>
     </li>
   ));
 
   return (
-    <div className="relative">
-      <nav className="fixed flex w-full items-center justify-between bg-black/85 px-10 py-5 shadow-lg backdrop-blur">
-        <div>
-          <Image src={logo} alt="picture of logo" width={50} height={50} />
-        </div>
-
-        <ul className="ml-auto flex px-2 py-2">{headerRender}</ul>
-
-        <div>
+    <header className="py-12">
+      <div className="container mx-auto">
+        <div className="mx-auto flex items-center justify-between rounded-3xl bg-white bg-opacity-20 px-8 shadow-xl">
           <Link
-            href="#"
-            className="rounded-lg border border-solid px-5 py-4 hover:bg-white hover:text-black"
+            href="/"
+            className="transition-all duration-300 hover:-translate-y-1 hover:drop-shadow-lg"
           >
-            Resume
+            <Image src={logo} alt="picture of the logo" width={50} height={50} priority />
           </Link>
+
+          <ul className="flex items-center justify-center gap-10">{headerRender}</ul>
+
+          <div className="inline-block text-right">
+            <button
+              type="button"
+              className="rounded-full bg-purple-500 px-5 py-2 text-white transition-all duration-300 hover:-translate-y-1 hover:bg-purple-800 hover:shadow-lg"
+            >
+              Resume
+            </button>
+          </div>
         </div>
-      </nav>
-    </div>
+      </div>
+    </header>
   );
 }
