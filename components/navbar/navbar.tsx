@@ -1,6 +1,9 @@
+"use client";
+
 import logo from "@/public/Logo.svg";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const headers = [
   { id: 1, name: "About" },
@@ -10,11 +13,12 @@ const headers = [
 ];
 
 export default function Navbar() {
+  const pathName = usePathname();
   const headerRender = headers.map((x) => (
     <li key={x.id} className="h-full">
       <Link
-        href="#"
-        className="block h-full px-3 py-7 transition-all hover:-translate-y-1 hover:drop-shadow-lg"
+        href={x.name.toLocaleLowerCase()}
+        className={`block h-full px-3 py-7 transition-all hover:-translate-y-1 hover:drop-shadow-lg ${pathName === x.name.toLowerCase() ? "text-orange-500" : "text-gray-900"}`}
       >
         {x.name}
       </Link>
