@@ -24,7 +24,7 @@ export default function Navbar() {
   return (
     <header className="py-12">
       <div className="container mx-auto">
-        <div className="mx-auto flex items-center justify-between rounded-3xl bg-white bg-opacity-20 px-8 shadow-xl">
+        <div className="mx-auto flex items-center justify-between rounded-3xl bg-white/20 px-8 shadow-xl transition-all duration-1000 hover:bg-white hover:bg-white/25">
           <Link
             href="/"
             className="transition-all duration-300 hover:-translate-y-1 hover:drop-shadow-lg"
