@@ -1,6 +1,15 @@
-import Navbar from "@/components/navbar/navbar";
+import Footer from "@/app/footer";
+import { ThemeProvider } from "@/components/theme-provider";
 import type { Metadata } from "next";
-import "./globals.scss";
+import { Poppins } from "next/font/google";
+import "./globals.css";
+import Navbar from "./navbar";
+
+const poppings = Poppins({
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  variable: "--font-poppins",
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "Aaron - Developer",
@@ -13,14 +22,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body>
-        <main className="relative h-screen overflow-hidden">
-          <span className="absolute -left-48 -top-48 -z-10 h-[500px] w-[500px] rounded-full bg-orange-500 bg-opacity-20 blur-3xl" />
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={`${poppings.variable} flex min-h-screen flex-col antialiased`}
+      >
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
           <Navbar />
-          <span className="absolute -bottom-48 -right-48 -z-10 h-[500px] w-[500px] rounded-full bg-purple-500 bg-opacity-20 blur-3xl" />
-          {children}
-        </main>
+          <main className="mx-auto min-h-[calc(100vh-80px)] max-w-6xl px-4 pt-24 pb-16 sm:px-6 lg:px-8">
+            {children}
+          </main>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );
