@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "./navbar";
+import ThemeButton from "./theme-button";
 
 const poppings = Poppins({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -37,6 +38,9 @@ export default function RootLayout({
             {children}
           </main>
           <Footer />
+          <div className="fixed right-4 bottom-4">
+            <ThemeButton />
+          </div>
         </ThemeProvider>
       </body>
     </html>
