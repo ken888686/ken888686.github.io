@@ -1,3 +1,5 @@
+import NoContent from "../no-content";
+
 export default function Blog() {
-  return <>Working on it...</>;
+  return <NoContent />;
 }

@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "./navbar";
+import ThemeButton from "./theme-button";
 
 const poppings = Poppins({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -26,17 +27,15 @@ export default function RootLayout({
       <body
         className={`${poppings.variable} flex min-h-screen flex-col antialiased`}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Navbar />
           <main className="mx-auto max-w-6xl px-4 pt-24 pb-16 sm:px-6 lg:px-8">
             {children}
           </main>
           <Footer />
+          <div className="fixed right-4 bottom-4">
+            <ThemeButton />
+          </div>
         </ThemeProvider>
       </body>
     </html>

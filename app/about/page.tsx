@@ -28,14 +28,12 @@ export default function About() {
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <User className="text-zinc-50" /> About Me
+            <User /> About Me
           </CardTitle>
         </CardHeader>
-        <CardContent className="grid gap-12 pt-6 md:grid-cols-2">
+        <CardContent className="grid gap-12 md:grid-cols-2">
           <div className="space-y-6">
-            <p className="text-lg leading-relaxed text-zinc-300">
-              {personalInfo.about}
-            </p>
+            <p className="text-lg leading-relaxed">{personalInfo.about}</p>
             <div className="flex gap-4">
               <Button variant="outline" size="icon" asChild>
                 <Link href="https://github.com/ken888686/" target="_blank">
@@ -57,9 +55,8 @@ export default function About() {
               </Button>
             </div>
           </div>
-
           <div>
-            <h3 className="mb-4 flex items-center gap-2 text-lg font-semibold text-zinc-50">
+            <h3 className="mb-4 flex items-center gap-2 text-lg font-semibold">
               <Code size={20} /> Skills
             </h3>
             <div className="mb-8 flex flex-wrap gap-2">
@@ -73,17 +70,16 @@ export default function About() {
                 </Badge>
               ))}
             </div>
-
-            <h3 className="mb-4 flex items-center gap-2 text-lg font-semibold text-zinc-50">
+            <h3 className="mb-4 flex items-center gap-2 text-lg font-semibold">
               <Terminal size={20} /> Tools
             </h3>
             <div className="grid grid-cols-2 gap-3">
               {["VS Code", "Line6 Pod GO", "Docker"].map((tool) => (
                 <div
                   key={tool}
-                  className="flex items-center gap-2 rounded border border-zinc-800 bg-zinc-900/50 p-2 text-zinc-400"
+                  className="flex items-center gap-2 rounded border p-2"
                 >
-                  <div className="h-1.5 w-1.5 rounded-full bg-zinc-500" />
+                  <div className="bg-primary h-1.5 w-1.5 rounded-full" />
                   {tool}
                 </div>
               ))}
