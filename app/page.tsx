@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const personalInfo = {
   name: "Aaron",
-  title: "AI Engineer @ Japanese Tech Firm",
+  title: "AI Engineer @ Japan",
   tagline: "專注於將 AI 技術落地，並致力於構建高效能的 Next.js 應用。",
   location: "Shinjuku, Tokyo",
 };

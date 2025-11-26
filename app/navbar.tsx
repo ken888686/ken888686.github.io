@@ -25,7 +25,13 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ForwardRefExoticComponent, RefAttributes, useState } from "react";
+import {
+  ForwardRefExoticComponent,
+  MouseEvent,
+  RefAttributes,
+  useCallback,
+  useState,
+} from "react";
 
 const navItems: {
   tab: string;
@@ -60,15 +66,16 @@ export default function Navbar() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const handleNavClick = (tab: string) => {
-    window.location.hash = tab;
+  const handleCLick = useCallback((e: MouseEvent<HTMLAnchorElement>) => {
     setMobileMenuOpen(false);
-  };
+    e.currentTarget.blur();
+  }, []);
 
   const logo = (
     <Link
       href="/"
       className="flex shrink-0 cursor-pointer items-center gap-2 text-xl font-bold tracking-wider"
+      onClick={handleCLick}
     >
       <Terminal className="" size={24} />
       <span className="uppercase">
@@ -96,9 +103,7 @@ export default function Navbar() {
                       <Link
                         href={item.tab}
                         className="flex-row items-center gap-2"
-                        onClick={(e) => {
-                          e.currentTarget.blur();
-                        }}
+                        onClick={handleCLick}
                       >
                         <item.icon size={18} />
                         <span>{item.label}</span>
@@ -119,31 +124,22 @@ export default function Navbar() {
                 </Button>
               </SheetTrigger>
               <SheetContent side="left">
-                <SheetHeader
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleNavClick("/");
-                    e.currentTarget.blur();
-                  }}
-                >
-                  <SheetTitle>{logo}</SheetTitle>
+                <SheetHeader>
+                  <SheetTitle asChild>{logo}</SheetTitle>
                 </SheetHeader>
                 <div className="mt-4 flex flex-col space-y-2">
                   {navItems.map((item) => (
                     <Button
+                      asChild
                       key={item.tab}
                       variant={pathname === item.tab ? "default" : "ghost"}
                       className="w-full justify-start gap-2"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        handleNavClick("/");
-                        e.currentTarget.blur();
-                      }}
                     >
                       <Link
                         key={item.tab}
                         href={item.tab}
                         className="flex w-full items-center justify-center gap-2"
+                        onClick={handleCLick}
                       >
                         <item.icon size={18} />
                         <span>{item.label}</span>

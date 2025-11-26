@@ -63,9 +63,9 @@ export default function About() {
               <Code size={20} /> Skills
             </h3>
             <div className="mb-8 flex flex-wrap gap-2">
-              {personalInfo.skills.map((skill, index) => (
+              {personalInfo.skills.map((skill) => (
                 <Badge
-                  key={index}
+                  key={skill}
                   variant="outline"
                   className="px-3 py-1 text-sm"
                 >
