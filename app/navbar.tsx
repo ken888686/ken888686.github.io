@@ -88,9 +88,9 @@ export default function Navbar() {
       className="flex shrink-0 cursor-pointer items-center gap-2 text-xl font-bold tracking-wider"
       onClick={handleCLick}
     >
-      <Terminal className="" size={24} />
+      <Terminal size={24} />
       <span className="uppercase">
-        YungChun<span className="text-primary">.dev</span>
+        YungChun<span className="text-primary lowercase">.dev</span>
       </span>
     </Link>
   );
@@ -123,7 +123,6 @@ export default function Navbar() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {logo}
-
           {/* Desktop Menu */}
           <div className="hidden md:flex">
             <NavigationMenu viewport={false}>
@@ -171,7 +170,7 @@ export default function Navbar() {
                   <Menu />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="left">
+              <SheetContent>
                 <SheetHeader>
                   <SheetTitle asChild>{logo}</SheetTitle>
                 </SheetHeader>

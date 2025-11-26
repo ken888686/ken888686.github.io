@@ -6,8 +6,7 @@ import Link from "next/link";
 const personalInfo = {
   name: "Yung Chun Tu",
   title: "AI Engineer @ Japan",
-  tagline:
-    "A backend-focused full-stack engineer with 9+ years of experience, specializing in .NET microservices, REST APIs, system modernization, and cloud DevOps—building observable, high-performance production systems and collaborating effectively across teams in Mandarin, Japanese, and English.",
+  tagline: `A backend-focused full-stack engineer with ${new Date().getFullYear() - 2016}+ years of experience, specializing in .NET microservices, REST APIs, system modernization, and cloud DevOps—building observable, high-performance production systems and collaborating effectively across teams in Mandarin, Japanese, and English.`,
   location: "Shinjuku, Tokyo",
 };
 
@@ -22,7 +21,7 @@ export default function Home() {
             alt="Me in Hiroshima"
             className="object-cover"
             fill
-            sizes="10vw"
+            sizes="50vw"
             priority
           />
         </div>
