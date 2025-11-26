@@ -46,7 +46,7 @@ export default function Home() {
           <Link href="mailto:ken888686@gmail.com">Contact Me</Link>
         </Button>
         <Button size="lg" variant="outline" asChild>
-          <Link href="/experience">Experience</Link>
+          <Link href="/about">About Me</Link>
         </Button>
       </div>
     </div>

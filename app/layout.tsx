@@ -27,12 +27,7 @@ export default function RootLayout({
       <body
         className={`${poppings.variable} flex min-h-screen flex-col antialiased`}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Navbar />
           <main className="mx-auto max-w-6xl px-4 pt-24 pb-16 sm:px-6 lg:px-8">
             {children}
