@@ -2,6 +2,12 @@
 
 import { Button } from "@/components/ui/button";
 import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import {
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuLink,
@@ -10,6 +16,7 @@ import {
 import {
   Sheet,
   SheetContent,
+  SheetFooter,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -20,9 +27,12 @@ import {
   House,
   LucideProps,
   Menu,
+  Moon,
+  Sun,
   Terminal,
   User,
 } from "lucide-react";
+import { useTheme } from "next-themes";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -65,6 +75,7 @@ const navItems: {
 export default function Navbar() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { setTheme } = useTheme();
 
   const handleCLick = useCallback((e: MouseEvent<HTMLAnchorElement>) => {
     setMobileMenuOpen(false);
@@ -84,6 +95,29 @@ export default function Navbar() {
     </Link>
   );
 
+  const themeButton = (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline" size="icon">
+          <Sun className="h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
+          <Moon className="absolute h-[1.2rem] w-[1.2rem] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />
+          <span className="sr-only">Toggle theme</span>
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end">
+        <DropdownMenuItem onClick={() => setTheme("light")}>
+          Light
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme("dark")}>
+          Dark
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme("system")}>
+          System
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+
   return (
     <nav className="fixed top-0 right-0 left-0 z-50 border-b backdrop-blur-md">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -98,19 +132,33 @@ export default function Navbar() {
                   <NavigationMenuItem key={item.tab}>
                     <NavigationMenuLink
                       asChild
-                      className={pathname === item.tab ? "bg-primary" : ""}
+                      className={
+                        pathname === item.tab
+                          ? "bg-primary text-primary-foreground"
+                          : ""
+                      }
                     >
                       <Link
                         href={item.tab}
                         className="flex-row items-center gap-2"
                         onClick={handleCLick}
                       >
-                        <item.icon size={18} />
+                        <item.icon
+                          size={18}
+                          className={
+                            pathname === item.tab
+                              ? "text-primary-foreground"
+                              : ""
+                          }
+                        />
                         <span>{item.label}</span>
                       </Link>
                     </NavigationMenuLink>
                   </NavigationMenuItem>
                 ))}
+
+                {/* Theme button */}
+                <NavigationMenuItem>{themeButton}</NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>
           </div>
@@ -127,18 +175,18 @@ export default function Navbar() {
                 <SheetHeader>
                   <SheetTitle asChild>{logo}</SheetTitle>
                 </SheetHeader>
-                <div className="mt-4 flex flex-col space-y-2">
+                <div className="mt-4 flex flex-col space-y-2 px-2">
                   {navItems.map((item) => (
                     <Button
                       asChild
                       key={item.tab}
                       variant={pathname === item.tab ? "default" : "ghost"}
-                      className="w-full justify-start gap-2"
+                      className="w-full justify-center gap-2 py-6 text-lg"
                     >
                       <Link
                         key={item.tab}
                         href={item.tab}
-                        className="flex w-full items-center justify-center gap-2"
+                        className="flex items-center justify-center gap-2"
                         onClick={handleCLick}
                       >
                         <item.icon size={18} />
@@ -147,6 +195,10 @@ export default function Navbar() {
                     </Button>
                   ))}
                 </div>
+                <SheetFooter>
+                  {/* Theme button */}
+                  {themeButton}
+                </SheetFooter>
               </SheetContent>
             </Sheet>
           </div>

@@ -7,9 +7,8 @@ import Link from "next/link";
 const personalInfo = {
   name: "Aaron",
   title: "AI Engineer @ Japanese Tech Firm",
-  tagline: "專注於將 AI 技術落地，並致力於構建高效能的 Next.js 應用。",
   about:
-    "嗨！我是 Aaron，來自台灣，目前與我的妻子 Anna 居住在東京新宿。我在一家日商擔任 AI Engineer，平常主要使用 Python、C#.net 以及 TypeScript。除了寫程式，我也熱愛彈吉他（FGN Strat type 擁有者！）並參與教會的敬拜團服事。",
+    "嗨！我是 Aaron，來自台灣，目前與我的妻子 Anna 居住在東京新宿。我在一家日商擔任 AI Engineer，平常主要使用 C#.net 、 TypeScript。除了寫程式，我也熱愛彈吉他（FGN Strat 擁有者！）並參與教會的敬拜團服事。",
   skills: [
     "Python",
     "C#.net",
@@ -22,13 +21,14 @@ const personalInfo = {
   ],
   location: "Shinjuku, Tokyo",
 };
+
 export default function About() {
   return (
     <div className="animate-in fade-in slide-in-from-bottom-4 mx-auto max-w-4xl duration-500">
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <User className="text-zinc-50" /> 關於我
+            <User className="text-zinc-50" /> About Me
           </CardTitle>
         </CardHeader>
         <CardContent className="grid gap-12 pt-6 md:grid-cols-2">

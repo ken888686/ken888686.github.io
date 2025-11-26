@@ -1,11 +1,13 @@
 import { Button } from "@/components/ui/button";
-import { MapPin, User } from "lucide-react";
+import { MapPin } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 const personalInfo = {
-  name: "Aaron",
+  name: "Yung Chun Tu",
   title: "AI Engineer @ Japan",
-  tagline: "專注於將 AI 技術落地，並致力於構建高效能的 Next.js 應用。",
+  tagline:
+    "A backend-focused full-stack engineer with 9+ years of experience, specializing in .NET microservices, REST APIs, system modernization, and cloud DevOps—building observable, high-performance production systems and collaborating effectively across teams in Mandarin, Japanese, and English.",
   location: "Shinjuku, Tokyo",
 };
 
@@ -13,16 +15,23 @@ export default function Home() {
   return (
     <div className="animate-in zoom-in-95 flex min-h-[60vh] flex-col items-center justify-center text-center duration-500">
       <div className="group relative mb-8 cursor-default">
-        <div className="absolute -inset-1 rounded-full bg-linear-to-r from-zinc-700 to-zinc-500 opacity-25 blur transition duration-1000 group-hover:opacity-50 group-hover:duration-200"></div>
-        <div className="relative flex h-40 w-40 items-center justify-center overflow-hidden rounded-full border-4 border-zinc-800 bg-zinc-900">
-          <User size={64} className="text-zinc-500" />
+        <div className="from-primary to-primary-foreground absolute -inset-1 rounded-full bg-linear-to-r opacity-25 blur transition duration-1000 group-hover:opacity-50 group-hover:duration-200"></div>
+        <div className="relative flex h-40 w-40 items-center justify-center overflow-hidden rounded-full border-4">
+          <Image
+            src="/me.JPG"
+            alt="Me in Hiroshima"
+            className="object-cover"
+            fill
+            sizes="10vw"
+            priority
+          />
         </div>
       </div>
 
-      <h1 className="mb-4 text-4xl font-bold tracking-tight text-zinc-50 md:text-6xl">
+      <h1 className="mb-4 text-4xl font-bold tracking-tight md:text-6xl">
         {personalInfo.name}
       </h1>
-      <p className="mb-6 max-w-2xl text-xl font-light text-zinc-400 md:text-2xl">
+      <p className="text-secondary-foreground mb-6 max-w-2xl text-xl font-light md:text-2xl">
         {personalInfo.title}
       </p>
 
