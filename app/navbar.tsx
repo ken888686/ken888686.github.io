@@ -32,6 +32,7 @@ import {
   useCallback,
   useState,
 } from "react";
+import ThemeButton from "./theme-button";
 
 const navItems: {
   tab: string;
@@ -121,6 +122,9 @@ export default function Navbar() {
                     </NavigationMenuLink>
                   </NavigationMenuItem>
                 ))}
+                <NavigationMenuItem>
+                  <ThemeButton />
+                </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>
           </div>
