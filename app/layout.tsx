@@ -33,7 +33,7 @@ export default function RootLayout({
             {children}
           </main>
           <Footer />
-          <div className="fixed right-4 bottom-4">
+          <div className="fixed right-4 bottom-4 md:hidden">
             <ThemeButton />
           </div>
         </ThemeProvider>
