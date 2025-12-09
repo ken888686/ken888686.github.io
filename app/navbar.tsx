@@ -32,7 +32,7 @@ import {
   useCallback,
   useState,
 } from "react";
-import ThemeButton from "./theme-button";
+import ModeToggle from "./mode-toggle";
 
 const navItems: {
   tab: string;
@@ -90,6 +90,7 @@ export default function Navbar() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {logo}
+
           {/* Desktop Menu */}
           <div className="hidden md:flex">
             <NavigationMenu viewport={false}>
@@ -122,8 +123,8 @@ export default function Navbar() {
                     </NavigationMenuLink>
                   </NavigationMenuItem>
                 ))}
-                <NavigationMenuItem>
-                  <ThemeButton />
+                <NavigationMenuItem className="border-l pl-3">
+                  <ModeToggle />
                 </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>

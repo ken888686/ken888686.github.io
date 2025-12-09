@@ -16,7 +16,7 @@ import {
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 
-export default function ThemeButton() {
+export default function ModeToggle() {
   const { setTheme, theme } = useTheme();
 
   return (
