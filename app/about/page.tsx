@@ -6,9 +6,13 @@ import Link from "next/link";
 
 const personalInfo = {
   name: "Aaron",
-  title: "AI Engineer @ Japanese Tech Firm",
-  about:
-    "嗨！我是 Aaron，來自台灣，目前與我的妻子 Anna 居住在東京新宿。我在一家日商擔任 AI Engineer，平常主要使用 C#.net 、 TypeScript。除了寫程式，我也熱愛彈吉他（FGN Strat 擁有者！）並參與教會的敬拜團服事。",
+  title: "Backend Engineer",
+  about: [
+    "Software Engineer with 9+ years of backend and full-stack experience.",
+    "Specialize in designing and delivering high-performance .NET-based microservices and RESTful APIs (.NET 8 / ASP.NET Core), system migrations, data modeling, and real-time processing—having led migrations and optimizations that produced up to 50% improvements in search performance and supported measurable product growth.",
+    "Build production-grade systems with strong test automation and stress-testing practices (MSTest, Locust) and ensure observability and reliability using cloud and DevOps tools (Azure, Azure Functions, Power Platform, Docker, Kubernetes, Prometheus, Grafana).",
+    "Trilingual in Mandarin, Japanese, and English, I thrive in cross-functional Agile teams where I translate product needs into robust, maintainable solutions.",
+  ],
   skills: [
     "Python",
     "C#.net",
@@ -33,7 +37,11 @@ export default function About() {
         </CardHeader>
         <CardContent className="grid gap-12 md:grid-cols-2">
           <div className="space-y-6">
-            <p className="text-lg leading-relaxed">{personalInfo.about}</p>
+            <p className="text-lg leading-relaxed">
+              {personalInfo.about.map((item, index) => (
+                <p key={index}>{item}</p>
+              ))}
+            </p>
             <div className="flex gap-4">
               <Button variant="outline" size="icon" asChild>
                 <Link href="https://github.com/ken888686/" target="_blank">
