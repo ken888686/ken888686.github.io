@@ -1,8 +1,10 @@
+import { MDXComponents } from "@/components/mdx-components";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getPostById } from "@/lib/getPost";
 import { ArrowLeft } from "lucide-react";
+import { MDXRemote } from "next-mdx-remote/rsc";
 import Link from "next/link";
 
 export default async function Article(props: {
@@ -48,7 +50,12 @@ export default async function Article(props: {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <div dangerouslySetInnerHTML={{ __html: post?.content || "" }} />
+          <div>
+            <MDXRemote
+              source={post?.content || ""}
+              components={MDXComponents}
+            />
+          </div>
         </CardContent>
       </Card>
     </div>

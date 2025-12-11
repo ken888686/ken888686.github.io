@@ -24,6 +24,7 @@ const personalInfo = {
     "Git",
   ],
   location: "Shinjuku, Tokyo",
+  tools: ["VS Code", "JetBrains", "Docker", "Visual Studio"],
 };
 
 export default function About() {
@@ -37,11 +38,13 @@ export default function About() {
         </CardHeader>
         <CardContent className="grid gap-12 md:grid-cols-2">
           <div className="space-y-6">
-            <p className="text-lg leading-relaxed">
+            <div className="flex flex-col gap-3">
               {personalInfo.about.map((item, index) => (
-                <p key={index}>{item}</p>
+                <p key={index} className="text-lg leading-relaxed">
+                  {item}
+                </p>
               ))}
-            </p>
+            </div>
             <div className="flex gap-4">
               <Button variant="outline" size="icon" asChild>
                 <Link href="https://github.com/ken888686/" target="_blank">
@@ -82,7 +85,7 @@ export default function About() {
               <Terminal size={20} /> Tools
             </h3>
             <div className="grid grid-cols-2 gap-3">
-              {["VS Code", "Line6 Pod GO", "Docker"].map((tool) => (
+              {personalInfo.tools.map((tool) => (
                 <div
                   key={tool}
                   className="flex items-center gap-2 rounded border p-2"
