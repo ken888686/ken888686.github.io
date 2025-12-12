@@ -29,7 +29,7 @@ export async function getPostById(id: number): Promise<{
   );
 }
 
-export async function getAllPosts(): Promise<
+export async function getAllPosts(enabled: boolean = true): Promise<
   {
     id: number;
     title: string;
@@ -46,7 +46,8 @@ export async function getAllPosts(): Promise<
       created_at: postsTable.createdAt,
       categories: postsTable.categories,
     })
-    .from(postsTable);
+    .from(postsTable)
+    .where(eq(postsTable.enabled, enabled));
 
   return posts;
 }
