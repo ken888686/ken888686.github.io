@@ -1,4 +1,5 @@
 import Footer from "@/app/footer";
+import ParticlesBackground from "@/components/particles-background";
 import { ThemeProvider } from "@/components/theme-provider";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
@@ -25,9 +26,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${poppings.variable} flex min-h-screen flex-col antialiased`}
+        className={`${poppings.variable} isolate flex min-h-screen flex-col antialiased`}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <ParticlesBackground />
           <Navbar />
           <main className="mx-auto max-w-6xl px-4 pt-24 pb-16 sm:px-6 lg:px-8">
             {children}
