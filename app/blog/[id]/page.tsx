@@ -7,12 +7,14 @@ import { ArrowLeft } from "lucide-react";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import Link from "next/link";
 
-export default async function Article(props: {
+export default async function Article({
+  params,
+}: {
   params: Promise<{
     id: number;
   }>;
 }) {
-  const { id } = await props.params;
+  const { id } = await params;
   const post = await getPostById(id);
 
   return (
@@ -42,7 +44,7 @@ export default async function Article(props: {
               ))}
             </div>
             <span className="text-secondary-foreground text-sm">
-              {post?.created_at}
+              post?.createdAt.toISOString()
             </span>
           </div>
           <CardTitle className="mb-4 text-3xl leading-tight md:text-4xl">

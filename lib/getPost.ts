@@ -1,24 +1,28 @@
-import { createClient } from "./supabase/server";
+import { db } from "@/db";
+import { postsTable } from "@/db/drizzle/schema";
+import { eq } from "drizzle-orm";
 
 export async function getPostById(id: number): Promise<{
   title: string;
-  created_at: string;
+  createdAt: string;
   categories: string[] | null;
   content: string | null;
 }> {
-  const supabase = await createClient();
-  if (!supabase) {
-    throw "No supabase instance.";
-  }
-  const { data } = await supabase
-    .from("posts")
-    .select("title, created_at, categories, content")
-    .eq("id", id)
-    .single();
+  const post = await db
+    .select({
+      title: postsTable.title,
+      createdAt: postsTable.createdAt,
+      categories: postsTable.categories,
+      content: postsTable.content,
+    })
+    .from(postsTable)
+    .where(eq(postsTable.id, id))
+    .then((res) => res[0]);
+
   return (
-    data ?? {
+    post ?? {
       title: "",
-      created_at: "",
+      createdAt: "",
       categories: [],
       content: "",
     }
@@ -29,22 +33,20 @@ export async function getAllPosts(): Promise<
   {
     id: number;
     title: string;
-    excerpt: string;
-    created_at: Date;
+    excerpt: string | null;
+    created_at: string;
     categories: string[] | null;
   }[]
 > {
-  const supabase = await createClient();
-  if (!supabase) {
-    throw "No supabase instance.";
-  }
-  const { data } = await supabase
-    .from("posts")
-    .select("id, title, excerpt, created_at,  categories");
-  const posts = data?.map((item) => ({
-    ...item,
-    created_at: new Date(item.created_at),
-  }));
+  const posts = await db
+    .select({
+      id: postsTable.id,
+      title: postsTable.title,
+      excerpt: postsTable.excerpt,
+      created_at: postsTable.createdAt,
+      categories: postsTable.categories,
+    })
+    .from(postsTable);
 
-  return posts ?? [];
+  return posts;
 }

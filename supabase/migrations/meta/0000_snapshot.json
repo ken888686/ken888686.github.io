@@ -1,5 +1,5 @@
 {
-  "id": "77e05d15-605a-4220-a71a-19449f7e7d24",
+  "id": "5e354456-45c0-4e9a-b44d-389e13c48a66",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -19,6 +19,12 @@
           "type": "varchar(256)",
           "primaryKey": false,
           "notNull": true
+        },
+        "excerpt": {
+          "name": "excerpt",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
         },
         "created_at": {
           "name": "created_at",

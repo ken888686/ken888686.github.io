@@ -27,7 +27,11 @@ export default async function Blog() {
 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-2">
         {posts
-          .sort((x, y) => y.created_at.getTime() - x.created_at.getTime())
+          .sort(
+            (x, y) =>
+              new Date(y.created_at).getTime() -
+              new Date(x.created_at).getTime(),
+          )
           .map((post) => (
             <Link key={post.id} href={`/blog/${post.id}`} className="block">
               <Card className="group hover:bg-secondary hover:border-secondary-foreground flex h-full cursor-pointer flex-col transition-all hover:shadow-xl">
@@ -53,7 +57,7 @@ export default async function Blog() {
                   </p>
                 </CardContent>
                 <CardFooter className="mt-auto flex justify-between border-t pt-4 text-sm">
-                  <span>{`${post.created_at.getFullYear()}-${post.created_at.getMonth() + 1}-${post.created_at.getDate()}`}</span>
+                  <span>{post.created_at}</span>
                   <span className="flex items-center transition-colors">
                     Read More <ChevronRight size={16} className="ml-1" />
                   </span>
