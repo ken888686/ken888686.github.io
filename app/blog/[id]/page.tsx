@@ -44,7 +44,7 @@ export default async function Article({
               ))}
             </div>
             <span className="text-secondary-foreground text-sm">
-              post?.createdAt.toISOString()
+              {post?.createdAt}
             </span>
           </div>
           <CardTitle className="mb-4 text-3xl leading-tight md:text-4xl">
