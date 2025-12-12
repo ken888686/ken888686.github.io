@@ -7,8 +7,7 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
-    "lint": "eslint",
-    "supabase": "supabase gen types typescript --project-id avygifacjqkxdkutrnur > ./db/database.types.ts"
+    "lint": "eslint"
   },
   "dependencies": {
     "@clerk/nextjs": "^6.34.0",
