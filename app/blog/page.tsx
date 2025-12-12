@@ -29,8 +29,7 @@ export default async function Blog() {
         {posts
           .sort(
             (x, y) =>
-              new Date(y.created_at).getTime() -
-              new Date(x.created_at).getTime(),
+              new Date(y.createdAt).getTime() - new Date(x.createdAt).getTime(),
           )
           .map((post) => (
             <Link key={post.id} href={`/blog/${post.id}`} className="block">
@@ -57,7 +56,7 @@ export default async function Blog() {
                   </p>
                 </CardContent>
                 <CardFooter className="mt-auto flex justify-between border-t pt-4 text-sm">
-                  <span>{post.created_at}</span>
+                  <span>{post.createdAt}</span>
                   <span className="flex items-center transition-colors">
                     Read More <ChevronRight size={16} className="ml-1" />
                   </span>
