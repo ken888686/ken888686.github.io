@@ -29,6 +29,7 @@ import {
   ForwardRefExoticComponent,
   MouseEvent,
   RefAttributes,
+  Suspense,
   useCallback,
   useState,
 } from "react";
@@ -63,7 +64,7 @@ const navItems: {
   },
 ];
 
-export default function Navbar() {
+function NavbarContent() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -86,87 +87,93 @@ export default function Navbar() {
   );
 
   return (
-    <nav className="fixed top-0 right-0 left-0 z-50 border-b backdrop-blur-md">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
-          {logo}
+    <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div className="flex h-16 items-center justify-between">
+        {logo}
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex">
-            <NavigationMenu viewport={false}>
-              <NavigationMenuList>
-                {navItems.map((item) => (
-                  <NavigationMenuItem key={item.tab}>
-                    <NavigationMenuLink
-                      asChild
-                      className={
-                        pathname === item.tab
-                          ? "bg-primary text-primary-foreground"
-                          : ""
-                      }
+        {/* Desktop Menu */}
+        <div className="hidden md:flex">
+          <NavigationMenu viewport={false}>
+            <NavigationMenuList>
+              {navItems.map((item) => (
+                <NavigationMenuItem key={item.tab}>
+                  <NavigationMenuLink
+                    asChild
+                    className={
+                      pathname === item.tab
+                        ? "bg-primary text-primary-foreground"
+                        : ""
+                    }
+                  >
+                    <Link
+                      href={item.tab}
+                      className="flex-row items-center gap-2"
+                      onClick={handleCLick}
                     >
-                      <Link
-                        href={item.tab}
-                        className="flex-row items-center gap-2"
-                        onClick={handleCLick}
-                      >
-                        <item.icon
-                          size={18}
-                          className={
-                            pathname === item.tab
-                              ? "text-primary-foreground"
-                              : ""
-                          }
-                        />
-                        <span>{item.label}</span>
-                      </Link>
-                    </NavigationMenuLink>
-                  </NavigationMenuItem>
-                ))}
-                <NavigationMenuItem className="border-l pl-3">
-                  <ModeToggle />
+                      <item.icon
+                        size={18}
+                        className={
+                          pathname === item.tab ? "text-primary-foreground" : ""
+                        }
+                      />
+                      <span>{item.label}</span>
+                    </Link>
+                  </NavigationMenuLink>
                 </NavigationMenuItem>
-              </NavigationMenuList>
-            </NavigationMenu>
-          </div>
+              ))}
+              <NavigationMenuItem className="border-l pl-3">
+                <ModeToggle />
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
+        </div>
 
-          {/* Mobile Menu Dropdown */}
-          <div className="md:hidden">
-            <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
-              <SheetTrigger asChild>
-                <Button variant="ghost" size="icon">
-                  <Menu />
-                </Button>
-              </SheetTrigger>
-              <SheetContent>
-                <SheetHeader>
-                  <SheetTitle asChild>{logo}</SheetTitle>
-                </SheetHeader>
-                <div className="mt-4 flex flex-col space-y-2 px-2">
-                  {navItems.map((item) => (
-                    <Button
-                      asChild
+        {/* Mobile Menu Dropdown */}
+        <div className="md:hidden">
+          <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon">
+                <Menu />
+              </Button>
+            </SheetTrigger>
+            <SheetContent>
+              <SheetHeader>
+                <SheetTitle asChild>{logo}</SheetTitle>
+              </SheetHeader>
+              <div className="mt-4 flex flex-col space-y-2 px-2">
+                {navItems.map((item) => (
+                  <Button
+                    asChild
+                    key={item.tab}
+                    variant={pathname === item.tab ? "default" : "ghost"}
+                    className="w-full justify-center gap-2 py-6 text-lg"
+                  >
+                    <Link
                       key={item.tab}
-                      variant={pathname === item.tab ? "default" : "ghost"}
-                      className="w-full justify-center gap-2 py-6 text-lg"
+                      href={item.tab}
+                      className="flex items-center justify-center gap-2"
+                      onClick={handleCLick}
                     >
-                      <Link
-                        key={item.tab}
-                        href={item.tab}
-                        className="flex items-center justify-center gap-2"
-                        onClick={handleCLick}
-                      >
-                        <item.icon size={18} />
-                        <span>{item.label}</span>
-                      </Link>
-                    </Button>
-                  ))}
-                </div>
-              </SheetContent>
-            </Sheet>
-          </div>
+                      <item.icon size={18} />
+                      <span>{item.label}</span>
+                    </Link>
+                  </Button>
+                ))}
+              </div>
+            </SheetContent>
+          </Sheet>
         </div>
       </div>
+    </div>
+  );
+}
+
+export default function Navbar() {
+  return (
+    <nav className="fixed top-0 right-0 left-0 z-50 border-b backdrop-blur-md">
+      <Suspense fallback={<div className="h-16" />}>
+        <NavbarContent />
+      </Suspense>
     </nav>
   );
 }
