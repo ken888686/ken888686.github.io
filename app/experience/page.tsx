@@ -1,3 +1,4 @@
+import { FadeInItem, StaggerContainer } from "@/components/motion-wrapper";
 import { Badge } from "@/components/ui/badge";
 import {
   Card,
@@ -217,23 +218,23 @@ const experiences: {
 
 export default function Experience() {
   return (
-    <div className="animate-in fade-in slide-in-from-bottom-4 mx-auto max-w-3xl duration-500">
-      <div className="mb-5 flex items-center justify-between">
+    <StaggerContainer className="mx-auto max-w-3xl">
+      <FadeInItem className="mb-5 flex items-center justify-between">
         <h2 className="flex items-center gap-2 text-3xl font-bold">
           <Briefcase /> Experience
         </h2>
-      </div>
+      </FadeInItem>
 
-      <div className="before:bg-secondary-foreground relative space-y-5 before:absolute before:inset-0 before:ml-6 before:h-full before:w-px">
+      <StaggerContainer className="before:bg-secondary-foreground relative space-y-5 before:absolute before:inset-0 before:ml-6 before:h-full before:w-px">
         {experiences
           .sort((x) => -x.startDate)
           .map((exp) => (
-            <div key={exp.id} className="relative pl-13">
+            <FadeInItem key={exp.id} className="relative pl-13">
               <div className="border-secondary-foreground bg-secondary-foreground absolute top-6 left-3.5 z-10 -ml-1.5 flex h-8 w-8 items-center justify-center rounded-full border-4">
                 <Cpu size={14} className="text-secondary" />
               </div>
 
-              <Card className="hover:text-secondary-foreground transition-colors">
+              <Card className="hover:text-secondary-foreground transition-colors duration-300">
                 <CardHeader className="pb-2">
                   <div className="flex flex-col justify-between gap-1 md:flex-row md:items-center">
                     <CardTitle className="text-xl">{exp.role}</CardTitle>
@@ -261,7 +262,7 @@ export default function Experience() {
                       <Badge
                         key={i}
                         variant="secondary"
-                        className="dark:border-secondary-foreground"
+                        className="dark:border-secondary-foreground transition-all duration-300 hover:scale-105"
                       >
                         {t}
                       </Badge>
@@ -269,9 +270,9 @@ export default function Experience() {
                   </div>
                 </CardContent>
               </Card>
-            </div>
+            </FadeInItem>
           ))}
-      </div>
-    </div>
+      </StaggerContainer>
+    </StaggerContainer>
   );
 }

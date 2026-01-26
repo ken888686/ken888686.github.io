@@ -1,3 +1,4 @@
+import { FadeInItem, StaggerContainer } from "@/components/motion-wrapper";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -29,75 +30,96 @@ const personalInfo = {
 
 export default function About() {
   return (
-    <div className="animate-in fade-in slide-in-from-bottom-4 mx-auto max-w-4xl duration-500">
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <User /> About Me
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="grid gap-12 md:grid-cols-2">
-          <div className="space-y-6">
-            <div className="flex flex-col gap-3">
-              {personalInfo.about.map((item, index) => (
-                <p key={index} className="text-lg leading-relaxed">
-                  {item}
-                </p>
-              ))}
-            </div>
-            <div className="flex gap-4">
-              <Button variant="outline" size="icon" asChild>
-                <Link href="https://github.com/ken888686/" target="_blank">
-                  <Github size={20} />
-                </Link>
-              </Button>
-              <Button variant="outline" size="icon" asChild>
-                <Link
-                  href="https://www.linkedin.com/in/yungchuntu/"
-                  target="_blank"
-                >
-                  <Linkedin size={20} />
-                </Link>
-              </Button>
-              <Button variant="outline" size="icon" asChild>
-                <Link href="mailto:ken888686@gmail.com">
-                  <Mail size={20} />
-                </Link>
-              </Button>
-            </div>
-          </div>
-          <div>
-            <h3 className="mb-4 flex items-center gap-2 text-lg font-semibold">
-              <Code size={20} /> Skills
-            </h3>
-            <div className="mb-8 flex flex-wrap gap-2">
-              {personalInfo.skills.map((skill) => (
-                <Badge
-                  key={skill}
+    <StaggerContainer className="mx-auto max-w-4xl">
+      <FadeInItem>
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <User /> About Me
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="grid gap-12 md:grid-cols-2">
+            <StaggerContainer className="space-y-6">
+              <FadeInItem className="flex flex-col gap-3">
+                {personalInfo.about.map((item, index) => (
+                  <p key={index} className="text-lg leading-relaxed">
+                    {item}
+                  </p>
+                ))}
+              </FadeInItem>
+              <FadeInItem className="flex gap-4">
+                <Button
                   variant="outline"
-                  className="px-3 py-1 text-sm"
+                  size="icon"
+                  asChild
+                  className="transition-transform duration-300 hover:scale-110"
                 >
-                  {skill}
-                </Badge>
-              ))}
-            </div>
-            <h3 className="mb-4 flex items-center gap-2 text-lg font-semibold">
-              <Terminal size={20} /> Tools
-            </h3>
-            <div className="grid grid-cols-2 gap-3">
-              {personalInfo.tools.map((tool) => (
-                <div
-                  key={tool}
-                  className="flex items-center gap-2 rounded border p-2"
+                  <Link href="https://github.com/ken888686/" target="_blank">
+                    <Github size={20} />
+                  </Link>
+                </Button>
+                <Button
+                  variant="outline"
+                  size="icon"
+                  asChild
+                  className="transition-transform duration-300 hover:scale-110"
                 >
-                  <div className="bg-primary h-1.5 w-1.5 rounded-full" />
-                  {tool}
+                  <Link
+                    href="https://www.linkedin.com/in/yungchuntu/"
+                    target="_blank"
+                  >
+                    <Linkedin size={20} />
+                  </Link>
+                </Button>
+                <Button
+                  variant="outline"
+                  size="icon"
+                  asChild
+                  className="transition-transform duration-300 hover:scale-110"
+                >
+                  <Link href="mailto:ken888686@gmail.com">
+                    <Mail size={20} />
+                  </Link>
+                </Button>
+              </FadeInItem>
+            </StaggerContainer>
+            <StaggerContainer>
+              <FadeInItem>
+                <h3 className="mb-4 flex items-center gap-2 text-lg font-semibold">
+                  <Code size={20} /> Skills
+                </h3>
+                <div className="mb-8 flex flex-wrap gap-2">
+                  {personalInfo.skills.map((skill) => (
+                    <Badge
+                      key={skill}
+                      variant="outline"
+                      className="hover:bg-primary hover:text-primary-foreground px-3 py-1 text-sm transition-colors duration-300"
+                    >
+                      {skill}
+                    </Badge>
+                  ))}
                 </div>
-              ))}
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-    </div>
+              </FadeInItem>
+              <FadeInItem>
+                <h3 className="mb-4 flex items-center gap-2 text-lg font-semibold">
+                  <Terminal size={20} /> Tools
+                </h3>
+                <div className="grid grid-cols-2 gap-3">
+                  {personalInfo.tools.map((tool) => (
+                    <div
+                      key={tool}
+                      className="hover:border-primary flex items-center gap-2 rounded border p-2 transition-colors duration-300"
+                    >
+                      <div className="bg-primary h-1.5 w-1.5 rounded-full" />
+                      {tool}
+                    </div>
+                  ))}
+                </div>
+              </FadeInItem>
+            </StaggerContainer>
+          </CardContent>
+        </Card>
+      </FadeInItem>
+    </StaggerContainer>
   );
 }
