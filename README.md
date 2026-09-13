@@ -21,6 +21,16 @@ your profile changes:
 The files under `app/` should normally only be changed when the page layout or
 presentation needs to change.
 
+## Deployment
+
+The `main` branch is built and deployed to GitHub Pages by
+`.github/workflows/nextjs.yml`. Pull requests run the same lint and static
+build checks without deploying.
+
+In the repository settings, set **Pages → Build and deployment → Source** to
+**GitHub Actions**. GitHub Pages then publishes the generated `out/` directory
+after a successful push to `main`.
+
 ## Monitoring
 
 [![DeepSource](https://deepsource.io/gh/ken888686/ken888686.github.io.svg/?label=active+issues&show_trend=true&token=90quaFkFGLYRLP5wZJBgQGhC)](https://deepsource.io/gh/ken888686/ken888686.github.io/?ref=repository-badge)
