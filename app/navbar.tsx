@@ -49,6 +49,11 @@ const navItems: {
     icon: House,
   },
   {
+    tab: "/about",
+    label: "About",
+    icon: User,
+  },
+  {
     tab: "/experience",
     label: "Experience",
     icon: Briefcase,
@@ -62,11 +67,6 @@ const navItems: {
     tab: "/blog",
     label: "Blog",
     icon: BookOpen,
-  },
-  {
-    tab: "/about",
-    label: "About",
-    icon: User,
   },
 ];
 
