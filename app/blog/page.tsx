@@ -38,12 +38,12 @@ export default function Blog() {
   const posts = getAllPosts();
 
   return (
-    <div className="mx-auto max-w-5xl">
-      <header className="mb-10 max-w-3xl">
-        <p className="text-primary mb-2 flex items-center gap-2 font-mono text-sm font-semibold tracking-wider uppercase">
+    <div className="page-shell mx-auto max-w-5xl">
+      <header className="page-header mb-10 max-w-3xl">
+        <p className="page-kicker flex items-center gap-2">
           <BookOpen size={16} aria-hidden="true" /> Blog
         </p>
-        <h1 className="text-3xl font-bold tracking-tight md:text-5xl">
+        <h1 className="text-3xl leading-tight font-bold tracking-[-0.03em] md:text-5xl">
           {blogConfig.title}
         </h1>
         <p className="text-muted-foreground mt-5 text-lg leading-relaxed">
@@ -54,7 +54,7 @@ export default function Blog() {
       <div className="grid gap-6 md:grid-cols-2">
         {posts.map((post) => (
           <Link key={post.slug} href={`/blog/${post.slug}`} className="group">
-            <Card className="h-full transition-transform group-hover:-translate-y-1 group-hover:shadow-lg">
+            <Card className="border-primary/15 h-full transition-transform group-hover:-translate-y-1 group-hover:shadow-lg">
               <CardHeader>
                 <div className="mb-2 flex items-center justify-between gap-3">
                   <Badge variant="outline">{post.category}</Badge>

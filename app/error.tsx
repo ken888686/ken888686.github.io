@@ -16,8 +16,10 @@ export default function Error({
   }, [error]);
 
   return (
-    <div className="flex h-[50vh] flex-col items-center justify-center gap-4 text-center">
-      <h2 className="text-2xl font-bold">Something went wrong!</h2>
+    <div className="border-destructive/20 bg-destructive/[0.04] flex min-h-[50vh] flex-col items-center justify-center gap-4 rounded-2xl border p-8 text-center">
+      <h2 className="text-2xl font-bold tracking-tight">
+        Something went wrong!
+      </h2>
       <p className="text-muted-foreground max-w-md">
         An error occurred while processing your request. Please try again later.
       </p>

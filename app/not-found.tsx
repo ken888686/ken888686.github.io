@@ -10,7 +10,7 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <Empty>
+    <Empty className="border-primary/15 bg-card/40 min-h-[50vh]">
       <EmptyHeader>
         <EmptyMedia variant="icon">
           <Construction />

@@ -14,7 +14,7 @@ export const MDXComponents = {
   h2: ({ className, ...props }: HTMLAttributes<HTMLHeadingElement>) => (
     <h2
       className={cn(
-        "text-foreground mt-10 scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0",
+        "text-foreground border-primary/20 mt-12 scroll-m-20 border-b pb-3 text-3xl font-semibold tracking-tight transition-colors first:mt-0",
         className,
       )}
       {...props}
@@ -91,7 +91,10 @@ export const MDXComponents = {
   ),
   blockquote: ({ className, ...props }: HTMLAttributes<HTMLQuoteElement>) => (
     <blockquote
-      className={cn("border-l-primary mt-6 border-l-4 pl-6 italic", className)}
+      className={cn(
+        "bg-primary/[0.06] border-l-primary mt-6 rounded-r-lg border-l-4 py-3 pr-4 pl-6 italic",
+        className,
+      )}
       {...props}
     />
   ),
@@ -147,7 +150,7 @@ export const MDXComponents = {
   pre: ({ className, ...props }: React.HTMLAttributes<HTMLPreElement>) => (
     <pre
       className={cn(
-        "bg-secondary border-secondary dark:bg-secondary-foreground dark:text-secondary mt-6 mb-4 overflow-x-auto rounded-lg border px-3 py-3",
+        "bg-secondary border-secondary dark:bg-secondary-foreground dark:text-secondary mt-6 mb-4 overflow-x-auto rounded-xl border px-4 py-4 shadow-sm",
         // Force reset styles for code blocks inside pre to avoid double styling
         "[&_code]:m-0 [&_code]:bg-transparent [&_code]:p-0",
         className,

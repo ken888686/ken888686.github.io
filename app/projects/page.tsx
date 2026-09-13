@@ -22,12 +22,10 @@ const projectIcons: Record<string, LucideIcon> = {
 
 export default function Projects() {
   return (
-    <div className="mx-auto max-w-5xl">
-      <header className="mb-10 max-w-3xl">
-        <p className="text-primary mb-2 font-mono text-sm font-semibold tracking-wider uppercase">
-          Technical projects
-        </p>
-        <h1 className="text-3xl font-bold tracking-tight md:text-5xl">
+    <div className="page-shell mx-auto max-w-5xl">
+      <header className="page-header mb-10 max-w-3xl">
+        <p className="page-kicker">Technical projects</p>
+        <h1 className="text-3xl leading-tight font-bold tracking-[-0.03em] md:text-5xl">
           Products built from interface to infrastructure.
         </h1>
         <p className="text-muted-foreground mt-5 text-lg leading-relaxed">
@@ -41,10 +39,13 @@ export default function Projects() {
           const ProjectIcon = projectIcons[project.id] ?? PanelsTopLeft;
 
           return (
-            <Card key={project.id} className="flex h-full flex-col">
+            <Card
+              key={project.id}
+              className="group border-primary/15 flex h-full flex-col hover:-translate-y-1 hover:shadow-lg"
+            >
               <CardHeader>
                 <ProjectIcon
-                  className="text-primary mb-3"
+                  className="text-primary mb-3 transition-transform duration-300 group-hover:scale-110"
                   size={28}
                   aria-hidden="true"
                 />
@@ -75,7 +76,7 @@ export default function Projects() {
                   href={project.repositoryUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="mt-auto inline-flex w-fit items-center gap-1 font-medium underline underline-offset-4"
+                  className="text-primary mt-auto inline-flex w-fit items-center gap-1 font-medium underline underline-offset-4"
                 >
                   View repository <ArrowUpRight size={16} aria-hidden="true" />
                 </Link>
