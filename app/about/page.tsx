@@ -15,12 +15,10 @@ export const metadata: Metadata = {
 
 export default function About() {
   return (
-    <div className="mx-auto max-w-4xl space-y-10">
-      <header className="max-w-3xl">
-        <p className="text-primary mb-2 font-mono text-sm font-semibold tracking-wider uppercase">
-          About
-        </p>
-        <h1 className="text-3xl font-bold tracking-tight md:text-5xl">
+    <div className="page-shell mx-auto max-w-4xl space-y-10">
+      <header className="page-header max-w-3xl">
+        <p className="page-kicker">About</p>
+        <h1 className="text-3xl leading-tight font-bold tracking-[-0.03em] md:text-5xl">
           Engineering with a focus on reliability and practical outcomes.
         </h1>
         <p className="text-muted-foreground mt-5 text-lg leading-relaxed">
@@ -29,7 +27,7 @@ export default function About() {
       </header>
 
       <div className="grid gap-6 md:grid-cols-2">
-        <Card>
+        <Card className="border-primary/15">
           <CardHeader>
             <CardTitle>Core strengths</CardTitle>
           </CardHeader>
@@ -49,7 +47,7 @@ export default function About() {
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="border-primary/15">
           <CardHeader>
             <CardTitle>Working context</CardTitle>
           </CardHeader>
@@ -72,7 +70,7 @@ export default function About() {
         </Card>
       </div>
 
-      <section className="bg-muted/40 rounded-xl border p-6 md:flex md:items-center md:justify-between md:gap-8 md:p-8">
+      <section className="bg-primary/[0.06] border-primary/15 rounded-2xl border p-6 shadow-sm md:flex md:items-center md:justify-between md:gap-8 md:p-8">
         <div>
           <h2 className="text-2xl font-semibold">Let&apos;s connect</h2>
           <p className="text-muted-foreground mt-2">

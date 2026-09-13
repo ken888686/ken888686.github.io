@@ -7,8 +7,7 @@ export const profile = {
     src: "/me.JPG",
     alt: "Yung Chun Tu in Hiroshima",
   },
-  headline:
-    "I build reliable systems and turn complex requirements into maintainable products.",
+  headline: "I turn complex requirements into reliable, maintainable systems.",
   summary:
     "Backend-focused software engineer with more than nine years of experience across the .NET ecosystem, TypeScript, cloud automation, system modernization, and applied AI.",
   about:

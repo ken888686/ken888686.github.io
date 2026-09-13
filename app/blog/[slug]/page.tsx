@@ -83,7 +83,7 @@ export default async function Article({ params }: ArticleProps) {
   };
 
   return (
-    <article className="mx-auto max-w-3xl">
+    <article className="article-shell mx-auto max-w-3xl">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
@@ -94,14 +94,14 @@ export default async function Article({ params }: ArticleProps) {
         </Link>
       </Button>
 
-      <header className="mb-10 border-b pb-8">
+      <header className="page-header mb-10 border-b pb-8">
         <div className="mb-4 flex flex-wrap items-center gap-3">
           <Badge variant="outline">{post.category}</Badge>
           <time dateTime={post.date} className="text-muted-foreground text-sm">
             {dateFormatter.format(new Date(`${post.date}T00:00:00Z`))}
           </time>
         </div>
-        <h1 className="text-3xl font-bold tracking-tight text-balance md:text-5xl">
+        <h1 className="text-3xl leading-tight font-bold tracking-[-0.03em] text-balance md:text-5xl">
           {post.title}
         </h1>
         <p className="text-muted-foreground mt-5 text-lg leading-relaxed">
@@ -109,7 +109,7 @@ export default async function Article({ params }: ArticleProps) {
         </p>
       </header>
 
-      <div className="min-w-0">
+      <div className="article-content min-w-0">
         <MDXRemote source={post.content} components={MDXComponents} />
       </div>
     </article>

@@ -3,31 +3,44 @@ import { GitHubIcon, LinkedInIcon } from "@/components/brand-icons";
 import { Button } from "@/components/ui/button";
 import { profile } from "@/content/profile";
 import { socialLinks } from "@/content/social-links";
-import { ArrowRight, FileText, MapPin } from "lucide-react";
+import {
+  ArrowRight,
+  CheckCircle2,
+  FileText,
+  MapPin,
+  Sparkles,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="mx-auto max-w-5xl py-8 md:py-16">
-      <section className="grid items-center gap-12 md:grid-cols-[1fr_18rem] md:gap-16">
-        <div>
-          <Badge variant="outline" className="mb-6 gap-2 px-3 py-1.5">
-            <MapPin size={14} aria-hidden="true" />
-            {profile.location}
-          </Badge>
+    <div className="grid-wash mx-auto max-w-5xl py-6 md:py-8 lg:py-10">
+      <section className="grid items-center gap-10 md:grid-cols-[1fr_16rem] md:gap-12 lg:grid-cols-[1fr_17rem] lg:gap-16">
+        <div className="reveal">
+          <div className="mb-5 flex flex-wrap items-center gap-3 md:mb-4">
+            <Badge variant="outline" className="gap-2 rounded-full px-3 py-1.5">
+              <MapPin size={14} aria-hidden="true" />
+              {profile.location}
+            </Badge>
+            <span className="text-muted-foreground flex items-center gap-2 text-sm">
+              <span className="h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_0_4px_color-mix(in_oklch,_#10b981_18%,_transparent)]" />
+              Open to thoughtful collaborations
+            </span>
+          </div>
 
-          <p className="text-primary mb-3 font-mono text-sm font-semibold tracking-wider uppercase">
+          <p className="text-primary mb-3 flex items-center gap-2 font-mono text-sm font-semibold tracking-wider uppercase">
+            <Sparkles size={15} aria-hidden="true" />
             {profile.title}
           </p>
-          <h1 className="max-w-3xl text-4xl font-bold tracking-tight text-balance md:text-6xl">
+          <h1 className="max-w-3xl text-4xl leading-[1.08] font-bold tracking-[-0.04em] text-balance md:text-5xl lg:text-6xl">
             {profile.headline}
           </h1>
-          <p className="text-muted-foreground mt-6 max-w-2xl text-lg leading-relaxed md:text-xl">
+          <p className="text-muted-foreground mt-4 max-w-2xl text-lg leading-relaxed md:text-lg">
             {profile.summary}
           </p>
 
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-6 flex flex-wrap gap-3">
             <Button size="lg" asChild>
               <Link href="/projects">
                 View selected work <ArrowRight aria-hidden="true" />
@@ -47,7 +60,7 @@ export default function Home() {
             </Button>
           </div>
 
-          <div className="mt-6 flex items-center gap-2">
+          <div className="mt-4 flex items-center gap-2">
             <Button variant="ghost" size="icon" asChild>
               <Link
                 href={socialLinks.github.href}
@@ -71,31 +84,49 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="bg-muted relative mx-auto aspect-square w-full max-w-72 overflow-hidden rounded-2xl border shadow-lg">
-          <Image
-            src={profile.image.src}
-            alt={profile.image.alt}
-            fill
-            className="object-cover"
-            sizes="(min-width: 768px) 288px, 70vw"
-            priority
+        <div className="reveal reveal-delay-1 relative mx-auto w-full max-w-60">
+          <div
+            className="bg-primary/10 absolute -inset-3 -rotate-3 rounded-[2rem]"
+            aria-hidden="true"
           />
+          <div className="bg-muted border-background relative aspect-square overflow-hidden rounded-[1.5rem] border-2 shadow-2xl shadow-slate-900/15">
+            <Image
+              src={profile.image.src}
+              alt={profile.image.alt}
+              fill
+              className="object-cover"
+              sizes="(min-width: 768px) 240px, 70vw"
+              priority
+            />
+          </div>
+          <div className="bg-card absolute -right-4 -bottom-4 rounded-xl border px-3 py-2 shadow-lg">
+            <p className="text-muted-foreground text-[11px] font-semibold tracking-widest uppercase">
+              Currently building
+            </p>
+            <p className="mt-1 flex items-center gap-2 text-sm font-semibold">
+              <CheckCircle2 className="text-emerald-500" size={15} /> Reliable
+              systems
+            </p>
+          </div>
         </div>
       </section>
 
       <section
-        className="mt-16 border-t pt-8 md:mt-24"
+        className="reveal reveal-delay-2 mt-12 border-t pt-6 md:mt-14"
         aria-labelledby="highlights-heading"
       >
         <h2 id="highlights-heading" className="sr-only">
           Career highlights
         </h2>
         <ul className="grid gap-4 md:grid-cols-3">
-          {profile.highlights.map((highlight) => (
+          {profile.highlights.map((highlight, index) => (
             <li
               key={highlight}
-              className="bg-card text-card-foreground rounded-lg border p-5 leading-relaxed"
+              className="bg-card/80 text-card-foreground rounded-xl border p-4 leading-relaxed shadow-sm transition-transform hover:-translate-y-1 hover:shadow-md"
             >
+              <span className="text-primary mb-2 block font-mono text-xs font-bold tracking-widest">
+                0{index + 1}
+              </span>
               {highlight}
             </li>
           ))}
