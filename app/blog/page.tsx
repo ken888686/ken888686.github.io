@@ -7,6 +7,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { blogConfig } from "@/content/blog";
+import { siteConfig } from "@/content/site";
 import { getAllPosts } from "@/lib/posts";
 import { ArrowRight, BookOpen } from "lucide-react";
 import type { Metadata } from "next";
@@ -15,6 +16,15 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Blog",
   description: blogConfig.description,
+  alternates: {
+    canonical: "/blog",
+  },
+  openGraph: {
+    title: blogConfig.title,
+    description: blogConfig.description,
+    url: `${siteConfig.url}/blog`,
+    type: "website",
+  },
 };
 
 const dateFormatter = new Intl.DateTimeFormat("en-US", {

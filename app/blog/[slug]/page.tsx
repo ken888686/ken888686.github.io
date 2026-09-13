@@ -1,6 +1,8 @@
 import { MDXComponents } from "@/components/mdx-components";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { profile } from "@/content/profile";
+import { siteConfig } from "@/content/site";
 import { getAllPosts, getPostBySlug } from "@/lib/posts";
 import { ArrowLeft } from "lucide-react";
 import type { Metadata } from "next";
@@ -36,11 +38,25 @@ export async function generateMetadata({
   return {
     title: post.title,
     description: post.excerpt,
+    authors: [{ name: profile.name, url: siteConfig.url }],
+    alternates: {
+      canonical: `/blog/${post.slug}`,
+    },
     openGraph: {
       title: post.title,
       description: post.excerpt,
+      url: `${siteConfig.url}/blog/${post.slug}`,
       type: "article",
       publishedTime: post.date,
+      authors: [profile.name],
+      section: post.category,
+      images: [],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
+      images: [],
     },
   };
 }
@@ -51,8 +67,27 @@ export default async function Article({ params }: ArticleProps) {
 
   if (!post) notFound();
 
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.title,
+    description: post.excerpt,
+    datePublished: post.date,
+    dateModified: post.date,
+    author: {
+      "@type": "Person",
+      name: profile.name,
+      url: siteConfig.url,
+    },
+    mainEntityOfPage: `${siteConfig.url}/blog/${post.slug}`,
+  };
+
   return (
     <article className="mx-auto max-w-3xl">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
       <Button asChild variant="ghost" className="mb-8 pl-0 hover:pl-2">
         <Link href="/blog">
           <ArrowLeft aria-hidden="true" /> Back to Blog
