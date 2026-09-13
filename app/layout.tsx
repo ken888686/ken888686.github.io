@@ -2,6 +2,7 @@ import Footer from "@/app/footer";
 import { ThemeProvider } from "@/components/theme-provider";
 import { profile } from "@/content/profile";
 import { siteConfig } from "@/content/site";
+import { socialLinks } from "@/content/social-links";
 import type { Metadata } from "next";
 import "./globals.css";
 import ModeToggle from "./mode-toggle";
@@ -38,7 +39,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/og.svg",
+        url: "/og.png",
         width: 1200,
         height: 630,
         alt: `${profile.name} — ${profile.title}`,
@@ -49,7 +50,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${profile.name} - ${profile.title}`,
     description: siteConfig.description,
-    images: ["/og.svg"],
+    images: ["/og.png"],
   },
   icons: {
     icon: [
@@ -81,10 +82,7 @@ const personJsonLd = {
     "@type": "PostalAddress",
     addressLocality: profile.location,
   },
-  sameAs: [
-    "https://github.com/ken888686/",
-    "https://www.linkedin.com/in/yungchuntu/",
-  ],
+  sameAs: [socialLinks.github.href, socialLinks.linkedin.href],
 };
 
 export default function RootLayout({

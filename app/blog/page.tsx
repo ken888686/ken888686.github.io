@@ -17,13 +17,21 @@ export const metadata: Metadata = {
   title: "Blog",
   description: blogConfig.description,
   alternates: {
-    canonical: "/blog",
+    canonical: "/blog/",
   },
   openGraph: {
     title: blogConfig.title,
     description: blogConfig.description,
-    url: `${siteConfig.url}/blog`,
+    url: `${siteConfig.url}/blog/`,
     type: "website",
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: `${siteConfig.name} — ${blogConfig.title}`,
+      },
+    ],
   },
 };
 
@@ -53,7 +61,7 @@ export default function Blog() {
 
       <div className="grid gap-6 md:grid-cols-2">
         {posts.map((post) => (
-          <Link key={post.slug} href={`/blog/${post.slug}`} className="group">
+          <Link key={post.slug} href={`/blog/${post.slug}/`} className="group">
             <Card className="border-primary/15 h-full transition-transform group-hover:-translate-y-1 group-hover:shadow-lg">
               <CardHeader>
                 <div className="mb-2 flex items-center justify-between gap-3">

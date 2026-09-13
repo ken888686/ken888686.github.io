@@ -89,7 +89,7 @@ export default function Projects() {
       <p className="text-muted-foreground mt-10 text-sm">
         Professional outcomes are summarized separately in the{" "}
         <Link
-          href="/experience"
+          href="/experience/"
           className="text-foreground font-medium underline underline-offset-4"
         >
           experience timeline
