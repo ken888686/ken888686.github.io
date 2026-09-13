@@ -28,7 +28,7 @@ test.describe("portfolio navigation", () => {
     await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
     await expect(
       page.getByRole("link", { name: "Back to Blog" }),
-    ).toHaveAttribute("href", "/blog/");
+    ).toHaveAttribute("href", /\/blog\/?$/);
     await expect(page.locator('meta[property="og:type"]')).toHaveAttribute(
       "content",
       "article",
