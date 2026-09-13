@@ -119,7 +119,7 @@ function NavbarContent() {
                       }
                     >
                       <Link
-                        href={item.tab}
+                        href={item.tab === "/" ? "/" : `${item.tab}/`}
                         className="flex-row items-center gap-2"
                         onClick={handleCLick}
                         aria-current={isActive ? "page" : undefined}
@@ -145,8 +145,17 @@ function NavbarContent() {
         <div className="md:hidden">
           <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon">
-                <Menu />
+              <Button
+                variant="ghost"
+                size="icon"
+                aria-label={
+                  mobileMenuOpen
+                    ? "Close navigation menu"
+                    : "Open navigation menu"
+                }
+                aria-expanded={mobileMenuOpen}
+              >
+                <Menu aria-hidden="true" />
               </Button>
             </SheetTrigger>
             <SheetContent>
@@ -165,7 +174,7 @@ function NavbarContent() {
                       className="w-full justify-center gap-2 py-6 text-lg"
                     >
                       <Link
-                        href={item.tab}
+                        href={item.tab === "/" ? "/" : `${item.tab}/`}
                         className="flex items-center justify-center gap-2"
                         onClick={handleCLick}
                         aria-current={isActive ? "page" : undefined}

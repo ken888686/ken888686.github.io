@@ -7,10 +7,10 @@ export const dynamic = "force-static";
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [
     "",
-    "/about",
-    "/experience",
-    "/projects",
-    "/blog",
+    "/about/",
+    "/experience/",
+    "/projects/",
+    "/blog/",
   ].map((path) => ({
     url: `${siteConfig.url}${path}`,
     changeFrequency: path === "/blog" ? "weekly" : "monthly",
@@ -18,7 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   const postRoutes: MetadataRoute.Sitemap = getAllPosts().map((post) => ({
-    url: `${siteConfig.url}/blog/${post.slug}`,
+    url: `${siteConfig.url}/blog/${post.slug}/`,
     lastModified: new Date(`${post.date}T00:00:00Z`),
     changeFrequency: "yearly",
     priority: 0.7,

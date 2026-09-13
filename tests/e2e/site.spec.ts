@@ -4,10 +4,10 @@ test.describe("portfolio navigation", () => {
   test("loads the primary routes", async ({ page }) => {
     const routes = [
       ["/", "I turn complex requirements"],
-      ["/about", "Engineering with a focus"],
-      ["/experience", "Selected roles"],
-      ["/projects", "Products built"],
-      ["/blog", "Technical & Life Notes"],
+      ["/about/", "Engineering with a focus"],
+      ["/experience/", "Selected roles"],
+      ["/projects/", "Products built"],
+      ["/blog/", "Technical & Life Notes"],
     ] as const;
 
     for (const [path, heading] of routes) {
@@ -19,7 +19,7 @@ test.describe("portfolio navigation", () => {
   });
 
   test("opens a blog article from the blog index", async ({ page }) => {
-    await page.goto("/blog");
+    await page.goto("/blog/");
     const articleLinks = page.getByRole("link", { name: "Read article" });
 
     await expect(articleLinks).toHaveCount(4);

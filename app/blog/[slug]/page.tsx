@@ -40,23 +40,30 @@ export async function generateMetadata({
     description: post.excerpt,
     authors: [{ name: profile.name, url: siteConfig.url }],
     alternates: {
-      canonical: `/blog/${post.slug}`,
+      canonical: `/blog/${post.slug}/`,
     },
     openGraph: {
       title: post.title,
       description: post.excerpt,
-      url: `${siteConfig.url}/blog/${post.slug}`,
+      url: `${siteConfig.url}/blog/${post.slug}/`,
       type: "article",
       publishedTime: post.date,
       authors: [profile.name],
       section: post.category,
-      images: [],
+      images: [
+        {
+          url: "/og.png",
+          width: 1200,
+          height: 630,
+          alt: `${profile.name} — ${post.title}`,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: post.title,
       description: post.excerpt,
-      images: [],
+      images: ["/og.png"],
     },
   };
 }
@@ -79,7 +86,7 @@ export default async function Article({ params }: ArticleProps) {
       name: profile.name,
       url: siteConfig.url,
     },
-    mainEntityOfPage: `${siteConfig.url}/blog/${post.slug}`,
+    mainEntityOfPage: `${siteConfig.url}/blog/${post.slug}/`,
   };
 
   return (
@@ -89,7 +96,7 @@ export default async function Article({ params }: ArticleProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
       />
       <Button asChild variant="ghost" className="mb-8 pl-0 hover:pl-2">
-        <Link href="/blog">
+        <Link href="/blog/">
           <ArrowLeft aria-hidden="true" /> Back to Blog
         </Link>
       </Button>

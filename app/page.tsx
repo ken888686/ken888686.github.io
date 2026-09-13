@@ -42,7 +42,7 @@ export default function Home() {
 
           <div className="mt-6 flex flex-wrap gap-3">
             <Button size="lg" asChild>
-              <Link href="/projects">
+              <Link href="/projects/">
                 View selected work <ArrowRight aria-hidden="true" />
               </Link>
             </Button>

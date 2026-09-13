@@ -38,7 +38,7 @@ export const projects: readonly Project[] = [
       "Next.js 16",
       "TypeScript",
       "MDX",
-      "Drizzle ORM",
+      "Static site generation",
       "GitHub Actions",
     ],
     repositoryUrl: "https://github.com/ken888686/ken888686.github.io",
