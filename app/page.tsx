@@ -15,17 +15,17 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="grid-wash mx-auto max-w-5xl py-6 md:py-8 lg:py-10">
-      <section className="grid items-center gap-10 md:grid-cols-[1fr_16rem] md:gap-12 lg:grid-cols-[1fr_17rem] lg:gap-16">
+    <div className="grid-wash mx-auto max-w-5xl py-4 md:py-8 lg:py-10">
+      <section className="grid items-center gap-8 md:grid-cols-[1fr_16rem] md:gap-12 lg:grid-cols-[1fr_17rem] lg:gap-16">
         <div className="reveal">
-          <div className="mb-5 flex flex-wrap items-center gap-3 md:mb-4">
+          <div className="mb-4 flex flex-wrap items-center gap-x-3 gap-y-2 md:mb-4">
             <Badge variant="outline" className="gap-2 rounded-full px-3 py-1.5">
               <MapPin size={14} aria-hidden="true" />
               {profile.location}
             </Badge>
-            <span className="text-muted-foreground flex items-center gap-2 text-sm">
-              <span className="h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_0_4px_color-mix(in_oklch,_#10b981_18%,_transparent)]" />
-              Open to thoughtful collaborations
+            <span className="text-muted-foreground flex w-full min-w-0 items-center gap-2 text-sm leading-5 sm:w-auto">
+              <span className="h-2 w-2 shrink-0 rounded-full bg-emerald-500 shadow-[0_0_0_4px_color-mix(in_oklch,_#10b981_18%,_transparent)]" />
+              <span className="min-w-0">Open to thoughtful collaborations</span>
             </span>
           </div>
 
@@ -112,7 +112,7 @@ export default function Home() {
       </section>
 
       <section
-        className="reveal reveal-delay-2 mt-12 border-t pt-6 md:mt-14"
+        className="reveal reveal-delay-2 mt-10 border-t pt-6 md:mt-14"
         aria-labelledby="highlights-heading"
       >
         <h2 id="highlights-heading" className="sr-only">
@@ -122,7 +122,7 @@ export default function Home() {
           {profile.highlights.map((highlight, index) => (
             <li
               key={highlight}
-              className="bg-card/80 text-card-foreground rounded-xl border p-4 leading-relaxed shadow-sm transition-transform hover:-translate-y-1 hover:shadow-md"
+              className="bg-card text-foreground rounded-xl border p-4 text-base leading-relaxed font-medium shadow-sm transition-transform hover:-translate-y-1 hover:shadow-md"
             >
               <span className="text-primary mb-2 block font-mono text-xs font-bold tracking-widest">
                 0{index + 1}
