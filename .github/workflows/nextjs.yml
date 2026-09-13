@@ -40,6 +40,12 @@ jobs:
       - name: Lint
         run: npm run lint
 
+      - name: Install Playwright browser
+        run: npx playwright install --with-deps chromium
+
+      - name: Run end-to-end tests
+        run: npm run test:e2e
+
       - name: Build static site
         run: npm run build
         env:

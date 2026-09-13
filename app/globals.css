@@ -258,6 +258,7 @@
 .grid-wash {
   position: relative;
   isolation: isolate;
+  overflow-x: clip;
 }
 .grid-wash::before {
   content: "";
