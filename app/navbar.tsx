@@ -20,6 +20,7 @@ import {
   House,
   LucideProps,
   Menu,
+  PanelsTopLeft,
   Terminal,
   User,
 } from "lucide-react";
@@ -48,21 +49,32 @@ const navItems: {
     icon: House,
   },
   {
-    tab: "/about",
-    label: "About",
-    icon: User,
-  },
-  {
     tab: "/experience",
     label: "Experience",
     icon: Briefcase,
+  },
+  {
+    tab: "/projects",
+    label: "Projects",
+    icon: PanelsTopLeft,
   },
   {
     tab: "/blog",
     label: "Blog",
     icon: BookOpen,
   },
+  {
+    tab: "/about",
+    label: "About",
+    icon: User,
+  },
 ];
+
+function isNavItemActive(pathname: string, tab: string) {
+  return tab === "/"
+    ? pathname === tab
+    : pathname === tab || pathname.startsWith(`${tab}/`);
+}
 
 function NavbarContent() {
   const pathname = usePathname();
@@ -95,32 +107,33 @@ function NavbarContent() {
         <div className="hidden md:flex">
           <NavigationMenu viewport={false}>
             <NavigationMenuList>
-              {navItems.map((item) => (
-                <NavigationMenuItem key={item.tab}>
-                  <NavigationMenuLink
-                    asChild
-                    className={
-                      pathname === item.tab
-                        ? "bg-primary text-primary-foreground"
-                        : ""
-                    }
-                  >
-                    <Link
-                      href={item.tab}
-                      className="flex-row items-center gap-2"
-                      onClick={handleCLick}
+              {navItems.map((item) => {
+                const isActive = isNavItemActive(pathname, item.tab);
+
+                return (
+                  <NavigationMenuItem key={item.tab}>
+                    <NavigationMenuLink
+                      asChild
+                      className={
+                        isActive ? "bg-primary text-primary-foreground" : ""
+                      }
                     >
-                      <item.icon
-                        size={18}
-                        className={
-                          pathname === item.tab ? "text-primary-foreground" : ""
-                        }
-                      />
-                      <span>{item.label}</span>
-                    </Link>
-                  </NavigationMenuLink>
-                </NavigationMenuItem>
-              ))}
+                      <Link
+                        href={item.tab}
+                        className="flex-row items-center gap-2"
+                        onClick={handleCLick}
+                        aria-current={isActive ? "page" : undefined}
+                      >
+                        <item.icon
+                          size={18}
+                          className={isActive ? "text-primary-foreground" : ""}
+                        />
+                        <span>{item.label}</span>
+                      </Link>
+                    </NavigationMenuLink>
+                  </NavigationMenuItem>
+                );
+              })}
               <NavigationMenuItem className="border-l pl-3">
                 <ModeToggle />
               </NavigationMenuItem>
@@ -141,24 +154,28 @@ function NavbarContent() {
                 <SheetTitle asChild>{logo}</SheetTitle>
               </SheetHeader>
               <div className="mt-4 flex flex-col space-y-2 px-2">
-                {navItems.map((item) => (
-                  <Button
-                    asChild
-                    key={item.tab}
-                    variant={pathname === item.tab ? "default" : "ghost"}
-                    className="w-full justify-center gap-2 py-6 text-lg"
-                  >
-                    <Link
+                {navItems.map((item) => {
+                  const isActive = isNavItemActive(pathname, item.tab);
+
+                  return (
+                    <Button
+                      asChild
                       key={item.tab}
-                      href={item.tab}
-                      className="flex items-center justify-center gap-2"
-                      onClick={handleCLick}
+                      variant={isActive ? "default" : "ghost"}
+                      className="w-full justify-center gap-2 py-6 text-lg"
                     >
-                      <item.icon size={18} />
-                      <span>{item.label}</span>
-                    </Link>
-                  </Button>
-                ))}
+                      <Link
+                        href={item.tab}
+                        className="flex items-center justify-center gap-2"
+                        onClick={handleCLick}
+                        aria-current={isActive ? "page" : undefined}
+                      >
+                        <item.icon size={18} />
+                        <span>{item.label}</span>
+                      </Link>
+                    </Button>
+                  );
+                })}
               </div>
             </SheetContent>
           </Sheet>

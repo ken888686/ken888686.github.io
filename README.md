@@ -6,6 +6,21 @@
 
 This blog contains most of the information about me.
 
+## Editing site content
+
+Portfolio copy is separated from the page components. Update these files when
+your profile changes:
+
+- `content/profile.ts` - title, summary, location, languages, and skills
+- `content/social-links.ts` - email, GitHub, and LinkedIn URLs
+- `content/experience.ts` - work history and measurable outcomes
+- `content/projects.ts` - public projects and repository links
+- `content/blog.ts` - blog labels and per-post categories
+- `posts/*.md` - article titles and content; filenames begin with `YYYY-MM-DD`
+
+The files under `app/` should normally only be changed when the page layout or
+presentation needs to change.
+
 ## Monitoring
 
 [![DeepSource](https://deepsource.io/gh/ken888686/ken888686.github.io.svg/?label=active+issues&show_trend=true&token=90quaFkFGLYRLP5wZJBgQGhC)](https://deepsource.io/gh/ken888686/ken888686.github.io/?ref=repository-badge)
