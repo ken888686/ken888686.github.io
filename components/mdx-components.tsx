@@ -100,6 +100,8 @@ export const MDXComponents = {
     alt,
     ...props
   }: React.ImgHTMLAttributes<HTMLImageElement>) => (
+    // Markdown images can use arbitrary sources without known dimensions.
+    // eslint-disable-next-line @next/next/no-img-element
     <img
       className={cn(
         "bg-muted mt-4 mb-4 rounded-xl border transition-all hover:scale-[1.01] hover:shadow-lg",

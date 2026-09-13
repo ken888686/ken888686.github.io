@@ -1,125 +1,122 @@
-import { FadeInItem, StaggerContainer } from "@/components/motion-wrapper";
 import { Badge } from "@/components/ui/badge";
+import { GitHubIcon, LinkedInIcon } from "@/components/brand-icons";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Code, Github, Linkedin, Mail, Terminal, User } from "lucide-react";
+import { profile } from "@/content/profile";
+import { socialLinks } from "@/content/social-links";
+import { FileText, Languages, Mail, MapPin } from "lucide-react";
+import type { Metadata } from "next";
 import Link from "next/link";
 
-const personalInfo = {
-  name: "Aaron",
-  title: "Backend Engineer",
-  about: [
-    "Software Engineer with 9+ years of backend and full-stack experience.",
-    "Specialize in designing and delivering high-performance .NET-based microservices and RESTful APIs (.NET 8 / ASP.NET Core), system migrations, data modeling, and real-time processing—having led migrations and optimizations that produced up to 50% improvements in search performance and supported measurable product growth.",
-    "Build production-grade systems with strong test automation and stress-testing practices (MSTest, Locust) and ensure observability and reliability using cloud and DevOps tools (Azure, Azure Functions, Power Platform, Docker, Kubernetes, Prometheus, Grafana).",
-    "Trilingual in Mandarin, Japanese, and English, I thrive in cross-functional Agile teams where I translate product needs into robust, maintainable solutions.",
-  ],
-  skills: [
-    "Python",
-    "C#.net",
-    "TypeScript",
-    "React",
-    "Next.js",
-    "Azure",
-    "Docker",
-    "Git",
-  ],
-  location: "Shinjuku, Tokyo",
-  tools: ["VS Code", "JetBrains", "Docker", "Visual Studio"],
+export const metadata: Metadata = {
+  title: "About",
+  description: "Background, strengths, and contact details for Yung Chun Tu.",
 };
 
 export default function About() {
   return (
-    <StaggerContainer className="mx-auto max-w-4xl">
-      <FadeInItem>
+    <div className="mx-auto max-w-4xl space-y-10">
+      <header className="max-w-3xl">
+        <p className="text-primary mb-2 font-mono text-sm font-semibold tracking-wider uppercase">
+          About
+        </p>
+        <h1 className="text-3xl font-bold tracking-tight md:text-5xl">
+          Engineering with a focus on reliability and practical outcomes.
+        </h1>
+        <p className="text-muted-foreground mt-5 text-lg leading-relaxed">
+          {profile.about}
+        </p>
+      </header>
+
+      <div className="grid gap-6 md:grid-cols-2">
         <Card>
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <User /> About Me
-            </CardTitle>
+            <CardTitle>Core strengths</CardTitle>
           </CardHeader>
-          <CardContent className="grid gap-12 md:grid-cols-2">
-            <StaggerContainer className="space-y-6">
-              <FadeInItem className="flex flex-col gap-3">
-                {personalInfo.about.map((item, index) => (
-                  <p key={index} className="text-lg leading-relaxed">
-                    {item}
-                  </p>
-                ))}
-              </FadeInItem>
-              <FadeInItem className="flex gap-4">
-                <Button
-                  variant="outline"
-                  size="icon"
-                  asChild
-                  className="transition-transform duration-300 hover:scale-110"
-                >
-                  <Link href="https://github.com/ken888686/" target="_blank">
-                    <Github size={20} />
-                  </Link>
-                </Button>
-                <Button
-                  variant="outline"
-                  size="icon"
-                  asChild
-                  className="transition-transform duration-300 hover:scale-110"
-                >
-                  <Link
-                    href="https://www.linkedin.com/in/yungchuntu/"
-                    target="_blank"
-                  >
-                    <Linkedin size={20} />
-                  </Link>
-                </Button>
-                <Button
-                  variant="outline"
-                  size="icon"
-                  asChild
-                  className="transition-transform duration-300 hover:scale-110"
-                >
-                  <Link href="mailto:ken888686@gmail.com">
-                    <Mail size={20} />
-                  </Link>
-                </Button>
-              </FadeInItem>
-            </StaggerContainer>
-            <StaggerContainer>
-              <FadeInItem>
-                <h3 className="mb-4 flex items-center gap-2 text-lg font-semibold">
-                  <Code size={20} /> Skills
-                </h3>
-                <div className="mb-8 flex flex-wrap gap-2">
-                  {personalInfo.skills.map((skill) => (
-                    <Badge
-                      key={skill}
-                      variant="outline"
-                      className="hover:bg-primary hover:text-primary-foreground px-3 py-1 text-sm transition-colors duration-300"
-                    >
+          <CardContent className="space-y-5">
+            {profile.skillGroups.map((group) => (
+              <div key={group.label}>
+                <h3 className="mb-2 text-sm font-medium">{group.label}</h3>
+                <div className="flex flex-wrap gap-2">
+                  {group.items.map((skill) => (
+                    <Badge key={skill} variant="secondary">
                       {skill}
                     </Badge>
                   ))}
                 </div>
-              </FadeInItem>
-              <FadeInItem>
-                <h3 className="mb-4 flex items-center gap-2 text-lg font-semibold">
-                  <Terminal size={20} /> Tools
-                </h3>
-                <div className="grid grid-cols-2 gap-3">
-                  {personalInfo.tools.map((tool) => (
-                    <div
-                      key={tool}
-                      className="hover:border-primary flex items-center gap-2 rounded border p-2 transition-colors duration-300"
-                    >
-                      <div className="bg-primary h-1.5 w-1.5 rounded-full" />
-                      {tool}
-                    </div>
-                  ))}
-                </div>
-              </FadeInItem>
-            </StaggerContainer>
+              </div>
+            ))}
           </CardContent>
         </Card>
-      </FadeInItem>
-    </StaggerContainer>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Working context</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4 text-sm">
+            <p className="flex items-center gap-3">
+              <MapPin className="text-primary" size={18} aria-hidden="true" />
+              Based in {profile.location}
+            </p>
+            <p className="flex items-center gap-3">
+              <Languages
+                className="text-primary"
+                size={18}
+                aria-hidden="true"
+              />
+              {profile.languages
+                .map((language) => `${language.name} (${language.level})`)
+                .join(", ")}
+            </p>
+          </CardContent>
+        </Card>
+      </div>
+
+      <section className="bg-muted/40 rounded-xl border p-6 md:flex md:items-center md:justify-between md:gap-8 md:p-8">
+        <div>
+          <h2 className="text-2xl font-semibold">Let&apos;s connect</h2>
+          <p className="text-muted-foreground mt-2">
+            The fastest way to reach me is by email. You can also find my work
+            and professional history below.
+          </p>
+        </div>
+        <div className="mt-6 flex flex-wrap gap-3 md:mt-0 md:shrink-0">
+          <Button asChild>
+            <Link href={socialLinks.email.href}>
+              <Mail aria-hidden="true" /> Email
+            </Link>
+          </Button>
+          <Button variant="outline" asChild>
+            <Link
+              href={socialLinks.resume.href}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FileText aria-hidden="true" /> Resume
+            </Link>
+          </Button>
+          <Button variant="outline" size="icon" asChild>
+            <Link
+              href={socialLinks.github.href}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="GitHub profile"
+            >
+              <GitHubIcon aria-hidden="true" />
+            </Link>
+          </Button>
+          <Button variant="outline" size="icon" asChild>
+            <Link
+              href={socialLinks.linkedin.href}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="LinkedIn profile"
+            >
+              <LinkedInIcon aria-hidden="true" />
+            </Link>
+          </Button>
+        </div>
+      </section>
+    </div>
   );
 }

@@ -1,106 +1,106 @@
-"use client";
-
+import { Badge } from "@/components/ui/badge";
+import { GitHubIcon, LinkedInIcon } from "@/components/brand-icons";
 import { Button } from "@/components/ui/button";
-import { motion, Variants } from "framer-motion";
-import { MapPin } from "lucide-react";
+import { profile } from "@/content/profile";
+import { socialLinks } from "@/content/social-links";
+import { ArrowRight, FileText, MapPin } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-const personalInfo = {
-  name: "Yung Chun Tu",
-  title: "AI Engineer @ Japan",
-  tagline: `A backend-focused full-stack engineer with ${new Date().getFullYear() - 2016}+ years of experience, specializing in .NET microservices, REST APIs, system modernization, and cloud DevOps—building observable, high-performance production systems and collaborating effectively across teams in Mandarin, Japanese, and English.`,
-  location: "Shinjuku, Tokyo",
-};
-
-const container: Variants = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.3,
-    },
-  },
-};
-
-const item: Variants = {
-  hidden: { opacity: 0, y: 20, filter: "blur(10px)" },
-  show: {
-    opacity: 1,
-    y: 0,
-    filter: "blur(0px)",
-    transition: { type: "spring", stiffness: 50 },
-  },
-};
-
 export default function Home() {
   return (
-    <motion.div
-      variants={container}
-      initial="hidden"
-      animate="show"
-      className="flex min-h-[60vh] flex-col items-center justify-center text-center"
-    >
-      <motion.div
-        variants={item}
-        className="group relative mb-8 cursor-default"
-      >
-        <div className="from-primary to-primary-foreground absolute -inset-1 rounded-full bg-linear-to-r opacity-25 blur transition duration-1000 group-hover:opacity-50 group-hover:duration-200"></div>
-        <div className="relative flex h-40 w-40 items-center justify-center overflow-hidden rounded-full border-4">
+    <div className="mx-auto max-w-5xl py-8 md:py-16">
+      <section className="grid items-center gap-12 md:grid-cols-[1fr_18rem] md:gap-16">
+        <div>
+          <Badge variant="outline" className="mb-6 gap-2 px-3 py-1.5">
+            <MapPin size={14} aria-hidden="true" />
+            {profile.location}
+          </Badge>
+
+          <p className="text-primary mb-3 font-mono text-sm font-semibold tracking-wider uppercase">
+            {profile.title}
+          </p>
+          <h1 className="max-w-3xl text-4xl font-bold tracking-tight text-balance md:text-6xl">
+            {profile.headline}
+          </h1>
+          <p className="text-muted-foreground mt-6 max-w-2xl text-lg leading-relaxed md:text-xl">
+            {profile.summary}
+          </p>
+
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Button size="lg" asChild>
+              <Link href="/projects">
+                View selected work <ArrowRight aria-hidden="true" />
+              </Link>
+            </Button>
+            <Button size="lg" variant="outline" asChild>
+              <Link href={socialLinks.email.href}>Contact me</Link>
+            </Button>
+            <Button size="lg" variant="ghost" asChild>
+              <Link
+                href={socialLinks.resume.href}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <FileText aria-hidden="true" /> View resume
+              </Link>
+            </Button>
+          </div>
+
+          <div className="mt-6 flex items-center gap-2">
+            <Button variant="ghost" size="icon" asChild>
+              <Link
+                href={socialLinks.github.href}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="GitHub profile"
+              >
+                <GitHubIcon aria-hidden="true" />
+              </Link>
+            </Button>
+            <Button variant="ghost" size="icon" asChild>
+              <Link
+                href={socialLinks.linkedin.href}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="LinkedIn profile"
+              >
+                <LinkedInIcon aria-hidden="true" />
+              </Link>
+            </Button>
+          </div>
+        </div>
+
+        <div className="bg-muted relative mx-auto aspect-square w-full max-w-72 overflow-hidden rounded-2xl border shadow-lg">
           <Image
-            src="/me.JPG"
-            alt="Me in Hiroshima"
-            className="object-cover transition-transform duration-500 group-hover:scale-110"
+            src={profile.image.src}
+            alt={profile.image.alt}
             fill
-            sizes="50vw"
+            className="object-cover"
+            sizes="(min-width: 768px) 288px, 70vw"
             priority
           />
         </div>
-      </motion.div>
+      </section>
 
-      <motion.h1
-        variants={item}
-        className="mb-4 text-4xl font-bold tracking-tight md:text-6xl"
+      <section
+        className="mt-16 border-t pt-8 md:mt-24"
+        aria-labelledby="highlights-heading"
       >
-        {personalInfo.name}
-      </motion.h1>
-      <motion.p
-        variants={item}
-        className="text-secondary-foreground mb-6 max-w-2xl text-xl font-light md:text-2xl"
-      >
-        {personalInfo.title}
-      </motion.p>
-
-      <motion.div
-        variants={item}
-        className="mb-8 flex items-center justify-center gap-2"
-      >
-        <MapPin size={16} />
-        <span>{personalInfo.location}</span>
-      </motion.div>
-
-      <motion.p variants={item} className="mb-10 max-w-xl leading-relaxed">
-        {personalInfo.tagline}
-      </motion.p>
-
-      <motion.div variants={item} className="flex gap-4">
-        <Button
-          size="lg"
-          asChild
-          className="transition-transform duration-300 hover:scale-105 active:scale-95"
-        >
-          <Link href="mailto:ken888686@gmail.com">Contact Me</Link>
-        </Button>
-        <Button
-          size="lg"
-          variant="outline"
-          asChild
-          className="transition-transform duration-300 hover:scale-105 active:scale-95"
-        >
-          <Link href="/about">About Me</Link>
-        </Button>
-      </motion.div>
-    </motion.div>
+        <h2 id="highlights-heading" className="sr-only">
+          Career highlights
+        </h2>
+        <ul className="grid gap-4 md:grid-cols-3">
+          {profile.highlights.map((highlight) => (
+            <li
+              key={highlight}
+              className="bg-card text-card-foreground rounded-lg border p-5 leading-relaxed"
+            >
+              {highlight}
+            </li>
+          ))}
+        </ul>
+      </section>
+    </div>
   );
 }

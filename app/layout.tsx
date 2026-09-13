@@ -1,36 +1,61 @@
 import Footer from "@/app/footer";
-import ParticlesBackground from "@/components/particles-background";
 import { ThemeProvider } from "@/components/theme-provider";
-import { Analytics } from "@vercel/analytics/next";
-import { SpeedInsights } from "@vercel/speed-insights/next";
+import { profile } from "@/content/profile";
+import { siteConfig } from "@/content/site";
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
 import "./globals.css";
 import ModeToggle from "./mode-toggle";
 import Navbar from "./navbar";
 
-const poppings = Poppins({
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-  variable: "--font-poppins",
-  subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
-  metadataBase: new URL("https://ken888686.github.io"),
+  metadataBase: new URL(siteConfig.url),
   title: {
-    default: "Yung Chun Tu - AI Engineer & Full Stack Developer",
-    template: "%s | Yung Chun Tu",
+    default: `${profile.name} - ${profile.title}`,
+    template: `%s | ${profile.name}`,
   },
-  description:
-    "A backend-focused full-stack engineer specializing in .NET, Next.js, and AI development based in Tokyo.",
+  description: siteConfig.description,
+  applicationName: `${profile.name} Portfolio`,
+  authors: [{ name: profile.name, url: siteConfig.url }],
+  creator: profile.name,
+  keywords: [
+    "YungChun Tu",
+    "Aaron Tu",
+    "software engineer",
+    "backend engineer",
+    ".NET",
+    "TypeScript",
+    "cloud automation",
+  ],
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    title: "Yung Chun Tu - AI Engineer & Full Stack Developer",
-    description:
-      "A backend-focused full-stack engineer specializing in .NET, Next.js, and AI development based in Tokyo.",
-    url: "https://ken888686.github.io",
-    siteName: "Yung Chun Tu Portfolio",
-    locale: "en_US",
+    title: `${profile.name} - ${profile.title}`,
+    description: siteConfig.description,
+    url: siteConfig.url,
+    siteName: `${profile.name} Portfolio`,
+    locale: siteConfig.locale,
     type: "website",
+    images: [
+      {
+        url: "/og.svg",
+        width: 1200,
+        height: 630,
+        alt: `${profile.name} — ${profile.title}`,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${profile.name} - ${profile.title}`,
+    description: siteConfig.description,
+    images: ["/og.svg"],
+  },
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
   },
   robots: {
     index: true,
@@ -45,6 +70,23 @@ export const metadata: Metadata = {
   },
 };
 
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: profile.name,
+  jobTitle: profile.title,
+  url: siteConfig.url,
+  image: `${siteConfig.url}${profile.image.src}`,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: profile.location,
+  },
+  sameAs: [
+    "https://github.com/ken888686/",
+    "https://www.linkedin.com/in/yungchuntu/",
+  ],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -52,11 +94,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${poppings.variable} isolate flex min-h-screen flex-col antialiased`}
-      >
+      <body className="isolate flex min-h-screen flex-col antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <ParticlesBackground />
           <Navbar />
           <main className="mx-auto max-w-6xl px-4 pt-24 pb-16 sm:px-6 lg:px-8">
             {children}
@@ -66,8 +109,6 @@ export default function RootLayout({
             <ModeToggle />
           </div>
         </ThemeProvider>
-        <Analytics />
-        <SpeedInsights />
       </body>
     </html>
   );
