@@ -99,3 +99,27 @@ test.describe("SEO endpoints", () => {
     expect(await sitemap.text()).toContain("/blog/2025-12-01-001");
   });
 });
+
+test.describe("reduced motion", () => {
+  test("keeps content visible when motion is reduced", async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await page.goto("/projects/");
+
+    await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+    await expect(page.locator("[data-motion-stagger-item]")).toHaveCount(2);
+
+    const motionStates = await page
+      .locator("[data-motion-reveal], [data-motion-stagger-item]")
+      .evaluateAll((elements) =>
+        elements.map((element) => {
+          const style = getComputedStyle(element);
+          return { opacity: style.opacity, transform: style.transform };
+        }),
+      );
+
+    expect(motionStates.every(({ opacity }) => opacity === "1")).toBe(true);
+    expect(motionStates.every(({ transform }) => transform === "none")).toBe(
+      true,
+    );
+  });
+});

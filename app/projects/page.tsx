@@ -1,5 +1,5 @@
 import { Badge } from "@/components/ui/badge";
-import { MotionReveal } from "@/components/motion-reveal";
+import { MotionStagger, MotionStaggerItem } from "@/components/motion-reveal";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { projects } from "@/content/projects";
 import {
@@ -35,13 +35,13 @@ export default function Projects() {
         </p>
       </header>
 
-      <div className="grid gap-6 md:grid-cols-2">
-        {projects.map((project, index) => {
+      <MotionStagger className="grid gap-6 md:grid-cols-2">
+        {projects.map((project) => {
           const ProjectIcon = projectIcons[project.id] ?? PanelsTopLeft;
 
           return (
-            <MotionReveal key={project.id} delay={index * 0.08}>
-              <Card className="group border-primary/15 flex h-full flex-col hover:-translate-y-1 hover:shadow-lg">
+            <MotionStaggerItem key={project.id}>
+              <Card className="group border-primary/15 flex h-full flex-col hover:shadow-lg">
                 <CardHeader>
                   <ProjectIcon
                     className="text-primary mb-3 transition-transform duration-300 group-hover:scale-110"
@@ -82,10 +82,10 @@ export default function Projects() {
                   </Link>
                 </CardContent>
               </Card>
-            </MotionReveal>
+            </MotionStaggerItem>
           );
         })}
-      </div>
+      </MotionStagger>
 
       <p className="text-muted-foreground mt-10 text-sm">
         Professional outcomes are summarized separately in the{" "}

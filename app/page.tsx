@@ -1,7 +1,12 @@
 import { GitHubIcon, LinkedInIcon } from "@/components/brand-icons";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { MotionReveal } from "@/components/motion-reveal";
+import {
+  MotionReveal,
+  MotionStagger,
+  MotionStaggerList,
+  MotionStaggerListItem,
+} from "@/components/motion-reveal";
 import { profile } from "@/content/profile";
 import { socialLinks } from "@/content/social-links";
 import {
@@ -120,19 +125,19 @@ export default function Home() {
           <h2 id="highlights-heading" className="sr-only">
             Career highlights
           </h2>
-          <ul className="grid gap-4 md:grid-cols-3">
+          <MotionStaggerList className="grid gap-4 md:grid-cols-3">
             {profile.highlights.map((highlight, index) => (
-              <li
+              <MotionStaggerListItem
                 key={highlight}
-                className="bg-card text-foreground rounded-xl border p-4 text-base leading-relaxed font-medium shadow-sm transition-transform hover:-translate-y-1 hover:shadow-md"
+                className="bg-card text-foreground rounded-xl border p-4 text-base leading-relaxed font-medium shadow-sm hover:shadow-md"
               >
                 <span className="text-primary mb-2 block font-mono text-xs font-bold tracking-widest">
                   0{index + 1}
                 </span>
                 {highlight}
-              </li>
+              </MotionStaggerListItem>
             ))}
-          </ul>
+          </MotionStaggerList>
         </section>
       </MotionReveal>
     </div>

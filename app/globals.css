@@ -290,3 +290,11 @@
     transform: translateY(0);
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  [data-motion-reveal],
+  [data-motion-stagger-item] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
