@@ -1,5 +1,6 @@
 import Footer from "@/app/footer";
 import { ThemeProvider } from "@/components/theme-provider";
+import { MotionProvider } from "@/components/motion-provider";
 import { profile } from "@/content/profile";
 import { siteConfig } from "@/content/site";
 import { socialLinks } from "@/content/social-links";
@@ -97,16 +98,18 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <Navbar />
-          <main className="mx-auto max-w-6xl px-4 pt-24 pb-16 sm:px-6 lg:px-8">
-            {children}
-          </main>
-          <Footer />
-          <div className="fixed right-4 bottom-4 md:hidden">
-            <ModeToggle />
-          </div>
-        </ThemeProvider>
+        <MotionProvider>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            <Navbar />
+            <main className="mx-auto max-w-6xl px-4 pt-24 pb-16 sm:px-6 lg:px-8">
+              {children}
+            </main>
+            <Footer />
+            <div className="fixed right-4 bottom-4 md:hidden">
+              <ModeToggle />
+            </div>
+          </ThemeProvider>
+        </MotionProvider>
       </body>
     </html>
   );

@@ -1,6 +1,12 @@
 import { GitHubIcon, LinkedInIcon } from "@/components/brand-icons";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import {
+  MotionReveal,
+  MotionStagger,
+  MotionStaggerList,
+  MotionStaggerListItem,
+} from "@/components/motion-reveal";
 import { profile } from "@/content/profile";
 import { socialLinks } from "@/content/social-links";
 import {
@@ -17,7 +23,7 @@ export default function Home() {
   return (
     <div className="grid-wash mx-auto max-w-5xl py-4 md:py-8 lg:py-10">
       <section className="grid items-center gap-8 md:grid-cols-[1fr_16rem] md:gap-12 lg:grid-cols-[1fr_17rem] lg:gap-16">
-        <div className="reveal">
+        <MotionReveal>
           <div className="mb-4 flex flex-wrap items-center gap-x-3 gap-y-2 md:mb-4">
             <Badge variant="outline" className="gap-2 rounded-full px-3 py-1.5">
               <MapPin size={14} aria-hidden="true" />
@@ -82,9 +88,9 @@ export default function Home() {
               </Link>
             </Button>
           </div>
-        </div>
+        </MotionReveal>
 
-        <div className="reveal reveal-delay-1 relative mx-auto w-full max-w-60">
+        <MotionReveal delay={0.08} className="relative mx-auto w-full max-w-60">
           <div
             className="bg-primary/10 absolute -inset-3 -rotate-3 rounded-4xl"
             aria-hidden="true"
@@ -108,30 +114,32 @@ export default function Home() {
               systems
             </p>
           </div>
-        </div>
+        </MotionReveal>
       </section>
 
-      <section
-        className="reveal reveal-delay-2 mt-10 border-t pt-6 md:mt-14"
-        aria-labelledby="highlights-heading"
-      >
-        <h2 id="highlights-heading" className="sr-only">
-          Career highlights
-        </h2>
-        <ul className="grid gap-4 md:grid-cols-3">
-          {profile.highlights.map((highlight, index) => (
-            <li
-              key={highlight}
-              className="bg-card text-foreground rounded-xl border p-4 text-base leading-relaxed font-medium shadow-sm transition-transform hover:-translate-y-1 hover:shadow-md"
-            >
-              <span className="text-primary mb-2 block font-mono text-xs font-bold tracking-widest">
-                0{index + 1}
-              </span>
-              {highlight}
-            </li>
-          ))}
-        </ul>
-      </section>
+      <MotionReveal delay={0.16}>
+        <section
+          className="border-t pt-6 md:mt-14"
+          aria-labelledby="highlights-heading"
+        >
+          <h2 id="highlights-heading" className="sr-only">
+            Career highlights
+          </h2>
+          <MotionStaggerList className="grid gap-4 md:grid-cols-3">
+            {profile.highlights.map((highlight, index) => (
+              <MotionStaggerListItem
+                key={highlight}
+                className="bg-card text-foreground rounded-xl border p-4 text-base leading-relaxed font-medium shadow-sm hover:shadow-md"
+              >
+                <span className="text-primary mb-2 block font-mono text-xs font-bold tracking-widest">
+                  0{index + 1}
+                </span>
+                {highlight}
+              </MotionStaggerListItem>
+            ))}
+          </MotionStaggerList>
+        </section>
+      </MotionReveal>
     </div>
   );
 }

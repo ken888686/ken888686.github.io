@@ -1,4 +1,6 @@
 import { MDXComponents } from "@/components/mdx-components";
+import { MotionReveal } from "@/components/motion-reveal";
+import { ReadingProgress } from "@/components/reading-progress";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { profile } from "@/content/profile";
@@ -91,6 +93,7 @@ export default async function Article({ params }: ArticleProps) {
 
   return (
     <article className="article-shell mx-auto max-w-3xl">
+      <ReadingProgress />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
@@ -116,9 +119,11 @@ export default async function Article({ params }: ArticleProps) {
         </p>
       </header>
 
-      <div className="article-content min-w-0">
-        <MDXRemote source={post.content} components={MDXComponents} />
-      </div>
+      <MotionReveal>
+        <div className="article-content min-w-0">
+          <MDXRemote source={post.content} components={MDXComponents} />
+        </div>
+      </MotionReveal>
     </article>
   );
 }
