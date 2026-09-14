@@ -12,11 +12,13 @@ export const profile = {
     alt: "Yung Chun Tu in Hiroshima",
   },
   headline: "I turn complex requirements into reliable, maintainable systems.",
-  summary: `Backend-focused software engineer with ${experienceLabel} of experience across the .NET ecosystem, TypeScript, cloud automation, system modernization, and applied AI.`,
+  experienceLabel,
+  summary:
+    "Backend-focused software engineer with {experience} of experience across the .NET ecosystem, TypeScript, cloud automation, system modernization, and applied AI.",
   about:
     "I specialize in scalable API design, legacy modernization, data-intensive systems, test automation, and cloud operations. I enjoy translating ambiguous product needs into pragmatic systems that teams can operate and improve with confidence.",
   highlights: [
-    `${experienceLabel} in backend and full-stack engineering`,
+    "{experience} in backend and full-stack engineering",
     ".NET services, cloud automation, and applied AI",
     "Working across Mandarin, Japanese, and English",
   ],

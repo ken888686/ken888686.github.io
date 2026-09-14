@@ -1,4 +1,5 @@
 import { GitHubIcon, LinkedInIcon } from "@/components/brand-icons";
+import { ExperienceText } from "@/components/experience-text";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -43,7 +44,10 @@ export default function Home() {
             {profile.headline}
           </h1>
           <p className="text-muted-foreground mt-4 max-w-2xl text-lg leading-relaxed md:text-lg">
-            {profile.summary}
+            <ExperienceText
+              template={profile.summary}
+              initialLabel={profile.experienceLabel}
+            />
           </p>
 
           <div className="mt-6 flex flex-wrap gap-3">
@@ -134,7 +138,10 @@ export default function Home() {
                 <span className="text-primary mb-2 block font-mono text-xs font-bold tracking-widest">
                   0{index + 1}
                 </span>
-                {highlight}
+                <ExperienceText
+                  template={highlight}
+                  initialLabel={profile.experienceLabel}
+                />
               </MotionStaggerListItem>
             ))}
           </MotionStaggerList>
