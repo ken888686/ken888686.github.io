@@ -1,61 +1,25 @@
-# About Me
+# YungChun Tu — Personal Portfolio
 
-[Aaron's Home](https://ken888686.github.io/)
+[Visit the portfolio](https://ken888686.github.io/)
 
-![Dev.to blog](https://img.shields.io/badge/dev.to-0A0A0A?style=for-the-badge&logo=dev.to&logoColor=white)
+This is my personal introduction website, presenting my background, career
+experience, selected projects, technical interests, and blog articles.
 
-This blog contains most of the information about me.
+The site is designed as a concise introduction for collaborators, recruiters,
+and anyone interested in my work as a software engineer.
 
-## Editing site content
+## Featured content
 
-Portfolio copy is separated from the page components. Update these files when
-your profile changes:
+- About me and current areas of interest
+- Career experience and professional outcomes
+- Selected projects and source repositories
+- Engineering notes and personal blog posts
+- Resume, GitHub, and LinkedIn links
 
-- `content/profile.ts` - title, summary, location, languages, and skills
-- `content/social-links.ts` - email, GitHub, and LinkedIn URLs
-- `content/experience.ts` - work history and measurable outcomes
-- `content/projects.ts` - public projects and repository links
-- `content/blog.ts` - blog labels and per-post categories
-- `posts/*.md` - article titles and content; filenames begin with `YYYY-MM-DD`
+## Technology
 
-The files under `app/` should normally only be changed when the page layout or
-presentation needs to change.
-
-## Deployment
-
-The `main` branch is built and deployed to GitHub Pages by
-`.github/workflows/nextjs.yml`. Pull requests run the same lint and static
-build checks without deploying.
-
-In the repository settings, set **Pages → Build and deployment → Source** to
-**GitHub Actions**. GitHub Pages then publishes the generated `out/` directory
-after a successful push to `main`.
-
-## Monitoring
-
-[![DeepSource](https://deepsource.io/gh/ken888686/ken888686.github.io.svg/?label=active+issues&show_trend=true&token=90quaFkFGLYRLP5wZJBgQGhC)](https://deepsource.io/gh/ken888686/ken888686.github.io/?ref=repository-badge)
-
-[![DeepSource](https://deepsource.io/gh/ken888686/ken888686.github.io.svg/?label=resolved+issues&show_trend=true&token=90quaFkFGLYRLP5wZJBgQGhC)](https://deepsource.io/gh/ken888686/ken888686.github.io/?ref=repository-badge)
-
-## Frameworks
-
-![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
-![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
-![shadcnui](https://img.shields.io/badge/shadcn%2Fui-000?style=for-the-badge&logo=shadcnui&logoColor=white)
-
-## Tools
-
-![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
-![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
-![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white)
-
-## Other
-
-![Adobe Premiere Pro](https://img.shields.io/badge/Adobe%20Premiere%20Pro-9999FF.svg?style=for-the-badge&logo=Adobe%20Premiere%20Pro&logoColor=white)
-![Adobe After Effects](https://img.shields.io/badge/Adobe%20After%20Effects-9999FF.svg?style=for-the-badge&logo=Adobe%20After%20Effects&logoColor=white)
-
-## Reference
-
-[tweakcn](https://tweakcn.com/)
-
-<!-- https://softivuspro.com/bentox/bontox/index.html -->
+![Next.js](https://img.shields.io/badge/Next.js-111?style=for-the-badge&logo=next.js&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
+![Motion](https://img.shields.io/badge/Motion-111?style=for-the-badge)
+![GitHub Pages](https://img.shields.io/badge/GitHub_Pages-222?style=for-the-badge&logo=github&logoColor=white)
