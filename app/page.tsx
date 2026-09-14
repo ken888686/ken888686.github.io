@@ -1,5 +1,5 @@
-import { Badge } from "@/components/ui/badge";
 import { GitHubIcon, LinkedInIcon } from "@/components/brand-icons";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { profile } from "@/content/profile";
 import { socialLinks } from "@/content/social-links";
@@ -24,7 +24,7 @@ export default function Home() {
               {profile.location}
             </Badge>
             <span className="text-muted-foreground flex w-full min-w-0 items-center gap-2 text-sm leading-5 sm:w-auto">
-              <span className="h-2 w-2 shrink-0 rounded-full bg-emerald-500 shadow-[0_0_0_4px_color-mix(in_oklch,_#10b981_18%,_transparent)]" />
+              <span className="h-2 w-2 shrink-0 rounded-full bg-emerald-500 shadow-[0_0_0_4px_color-mix(in_oklch,#10b981_18%,transparent)]" />
               <span className="min-w-0">Open to thoughtful collaborations</span>
             </span>
           </div>
@@ -86,10 +86,10 @@ export default function Home() {
 
         <div className="reveal reveal-delay-1 relative mx-auto w-full max-w-60">
           <div
-            className="bg-primary/10 absolute -inset-3 -rotate-3 rounded-[2rem]"
+            className="bg-primary/10 absolute -inset-3 -rotate-3 rounded-4xl"
             aria-hidden="true"
           />
-          <div className="bg-muted border-background relative aspect-square overflow-hidden rounded-[1.5rem] border-2 shadow-2xl shadow-slate-900/15">
+          <div className="bg-muted border-background relative aspect-square overflow-hidden rounded-3xl border-2 shadow-2xl shadow-slate-900/15">
             <Image
               src={profile.image.src}
               alt={profile.image.alt}
