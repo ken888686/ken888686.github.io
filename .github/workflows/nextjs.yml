@@ -46,10 +46,16 @@ jobs:
       - name: Run end-to-end tests
         run: npm run test:e2e
 
+      - name: Run unit tests
+        run: npm run test:unit
+
       - name: Build static site
         run: npm run build
         env:
           NEXT_TELEMETRY_DISABLED: 1
+
+      - name: Test static export
+        run: npm run test:static
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v5

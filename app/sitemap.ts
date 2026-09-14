@@ -13,7 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/blog/",
   ].map((path) => ({
     url: `${siteConfig.url}${path}`,
-    changeFrequency: path === "/blog" ? "weekly" : "monthly",
+    changeFrequency: path === "/blog/" ? "weekly" : "monthly",
     priority: path === "" ? 1 : 0.8,
   }));
 

@@ -1,5 +1,5 @@
-import { Badge } from "@/components/ui/badge";
 import { MotionReveal } from "@/components/motion-reveal";
+import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { experiences } from "@/content/experience";
 import type { Metadata } from "next";
@@ -33,7 +33,7 @@ export default function Experience() {
       <ol className="border-primary/25 relative space-y-7 border-l pl-6 md:pl-8">
         {featuredExperiences.map((experience, index) => (
           <li key={experience.id} className="relative">
-            <span className="border-background bg-primary absolute top-7 -left-[1.95rem] h-3 w-3 rounded-full border-2 shadow-[0_0_0_4px_color-mix(in_oklch,_var(--primary)_15%,_transparent)] md:-left-[2.45rem]" />
+            <span className="border-background bg-primary absolute top-7 -left-[1.95rem] h-3 w-3 rounded-full border-2 shadow-[0_0_0_4px_color-mix(in_oklch,var(--primary)_15%,transparent)] md:-left-[2.45rem]" />
             <MotionReveal delay={index * 0.08}>
               <Card className="border-primary/15 hover:-translate-y-0.5 hover:shadow-md">
                 <CardHeader className="gap-2">

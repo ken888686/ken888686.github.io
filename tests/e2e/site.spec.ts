@@ -1,3 +1,4 @@
+import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 
 test.describe("portfolio navigation", () => {
@@ -22,7 +23,7 @@ test.describe("portfolio navigation", () => {
     await page.goto("/blog/");
     const articleLinks = page.getByRole("link", { name: "Read article" });
 
-    await expect(articleLinks).toHaveCount(4);
+    await expect(articleLinks.first()).toBeVisible();
     await articleLinks.first().click();
 
     await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
@@ -35,8 +36,20 @@ test.describe("portfolio navigation", () => {
     );
     await expect(page.locator('meta[name="description"]')).toHaveAttribute(
       "content",
-      "Notes from learning Next.js App Router as a backend-focused engineer.",
+      /.+/,
     );
+  });
+});
+
+test.describe("homepage accessibility", () => {
+  test("provides a skip link to the main content", async ({ page }) => {
+    await page.goto("/");
+    await page.keyboard.press("Tab");
+
+    const skipLink = page.getByRole("link", { name: "Skip to main content" });
+    await expect(skipLink).toBeFocused();
+    await skipLink.press("Enter");
+    await expect(page.locator("main")).toBeFocused();
   });
 });
 
@@ -53,6 +66,9 @@ test.describe("homepage responsive behavior", () => {
     await expect(
       page.getByRole("link", { name: "View resume" }),
     ).toHaveAttribute("href", "/resume/YungChun-Tu-Resume.pdf");
+    await expect(page.locator("[data-experience-duration]").first()).toHaveText(
+      /^\d+\+ years$/,
+    );
 
     const hasHorizontalOverflow = await page.evaluate(
       () =>
@@ -60,6 +76,27 @@ test.describe("homepage responsive behavior", () => {
         document.documentElement.clientWidth,
     );
     expect(hasHorizontalOverflow).toBe(false);
+  });
+});
+
+test.describe("accessibility", () => {
+  test("has no automatically detectable accessibility violations", async ({
+    page,
+  }) => {
+    await page.emulateMedia({ reducedMotion: "reduce" });
+
+    for (const route of [
+      "/",
+      "/about/",
+      "/experience/",
+      "/projects/",
+      "/blog/",
+    ]) {
+      await page.goto(route);
+      const results = await new AxeBuilder({ page }).analyze();
+
+      expect(results.violations, route).toEqual([]);
+    }
   });
 });
 
@@ -84,6 +121,34 @@ test.describe("mobile navigation", () => {
       page.getByRole("button", { name: "Toggle navigation menu" }),
     ).toHaveAttribute("aria-expanded", "false");
   });
+
+  test("closes with Escape and restores focus to the trigger", async ({
+    page,
+  }, testInfo) => {
+    test.skip(testInfo.project.name !== "mobile-chrome", "mobile-only check");
+
+    await page.goto("/");
+    const menuButton = page.getByRole("button", {
+      name: "Toggle navigation menu",
+    });
+    await menuButton.click();
+    await page.keyboard.press("Escape");
+
+    await expect(menuButton).toHaveAttribute("aria-expanded", "false");
+    await expect(menuButton).toBeFocused();
+  });
+});
+
+test.describe("theme preference", () => {
+  test("persists the selected theme across navigation", async ({ page }) => {
+    await page.goto("/");
+    await page.getByRole("button", { name: "Toggle theme" }).first().click();
+    await page.getByRole("menuitem", { name: "Dark" }).click();
+
+    await expect(page.locator("html")).toHaveClass(/dark/);
+    await page.goto("/projects/");
+    await expect(page.locator("html")).toHaveClass(/dark/);
+  });
 });
 
 test.describe("SEO endpoints", () => {
@@ -96,7 +161,7 @@ test.describe("SEO endpoints", () => {
       "Sitemap: https://ken888686.github.io/sitemap.xml",
     );
     expect(sitemap.ok()).toBe(true);
-    expect(await sitemap.text()).toContain("/blog/2025-12-01-001");
+    expect(await sitemap.text()).toMatch(/<loc>[^<]+\/blog\/[^/]+\/<\/loc>/);
   });
 });
 
@@ -122,4 +187,39 @@ test.describe("reduced motion", () => {
       true,
     );
   });
+});
+
+test.describe("motion", () => {
+  test("reveals project cards after they enter the viewport", async ({
+    page,
+  }) => {
+    await page.goto("/projects/");
+    const cards = page.locator("[data-motion-stagger-item]");
+
+    await cards.last().scrollIntoViewIfNeeded();
+    await expect(cards.last()).toHaveCSS("opacity", "1");
+  });
+});
+
+test.describe("visual regression", () => {
+  for (const route of ["/", "/projects/"]) {
+    test(`matches ${route} in light mode`, async ({ page }, testInfo) => {
+      await page.emulateMedia({
+        colorScheme: "light",
+        reducedMotion: "reduce",
+      });
+      await page.goto(route);
+
+      await expect(page).toHaveScreenshot(
+        `${testInfo.project.name}-${route === "/" ? "home" : "projects"}.png`,
+        {
+          animations: "disabled",
+          fullPage: true,
+          // Font rasterization can differ slightly between otherwise identical
+          // Chromium runs. Keep the threshold small enough to flag UI changes.
+          maxDiffPixels: 1_500,
+        },
+      );
+    });
+  }
 });

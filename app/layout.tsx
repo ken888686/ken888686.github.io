@@ -94,6 +94,12 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="isolate flex min-h-screen flex-col antialiased">
+        <a
+          href="#main-content"
+          className="bg-background text-foreground sr-only fixed top-4 left-4 z-60 rounded-lg border px-4 py-3 font-medium shadow-lg focus:not-sr-only"
+        >
+          Skip to main content
+        </a>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
@@ -101,7 +107,11 @@ export default function RootLayout({
         <MotionProvider>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <Navbar />
-            <main className="mx-auto max-w-6xl px-4 pt-24 pb-16 sm:px-6 lg:px-8">
+            <main
+              id="main-content"
+              tabIndex={-1}
+              className="mx-auto max-w-6xl scroll-mt-20 px-4 pt-24 pb-16 sm:px-6 lg:px-8"
+            >
               {children}
             </main>
             <Footer />

@@ -78,10 +78,9 @@ function parseFrontMatter(source: string) {
   return { metadata, content: source.slice(match[0].length).trim() };
 }
 
-function parsePost(filename: string): Post {
+export function parsePostSource(filename: string, source: string): Post {
   const slug = filename.slice(0, -markdownExtension.length);
-  const source = readFileSync(join(postsDirectory, filename), "utf8").trim();
-  const { metadata, content: sourceContent } = parseFrontMatter(source);
+  const { metadata, content: sourceContent } = parseFrontMatter(source.trim());
   const titleMatch = sourceContent.match(/^#\s+(.+)$/m);
   const title = metadata.title ?? titleMatch?.[1]?.trim() ?? slug;
   const content = titleMatch
@@ -98,6 +97,13 @@ function parsePost(filename: string): Post {
     excerpt: metadata.description ?? createExcerpt(content),
     content,
   };
+}
+
+function parsePost(filename: string): Post {
+  return parsePostSource(
+    filename,
+    readFileSync(join(postsDirectory, filename), "utf8"),
+  );
 }
 
 export function getAllPosts() {
