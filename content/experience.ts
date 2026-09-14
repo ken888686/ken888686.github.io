@@ -29,24 +29,6 @@ export const experiences: readonly Experience[] = [
     featured: true,
   },
   {
-    id: "full-stack-engineer-2024",
-    role: "Full-stack Engineer",
-    company: "BRIGHT STAR CO., LTD. · Tokyo, Japan",
-    period: "Aug 2024 - Dec 2024",
-    highlights: [
-      "Translated fluid-flow calculations and domain requirements into production data models and algorithms.",
-      "Designed high-performance table schemas and indexing strategies for intensive numeric calculations and queries.",
-      "Built real-time processing and visualization pipelines for immediate operational decision-making.",
-    ],
-    technologies: [
-      "C#",
-      "System Design",
-      "Data Modeling",
-      "Real-time Processing",
-    ],
-    featured: true,
-  },
-  {
     id: "application-engineer-2023",
     role: "Application Engineer",
     company: "Rakuten (Michael Page) · Tokyo, Japan",
