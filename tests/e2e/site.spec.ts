@@ -216,8 +216,9 @@ test.describe("visual regression", () => {
           animations: "disabled",
           fullPage: true,
           // Font rasterization differs between the macOS baseline and GitHub's
-          // Linux runner. This still flags meaningful layout or colour changes.
-          maxDiffPixelRatio: 0.01,
+          // Linux runner. A 3% budget still flags meaningful layout or colour
+          // changes while excluding cross-platform text-rendering noise.
+          maxDiffPixelRatio: 0.03,
         },
       );
     });
