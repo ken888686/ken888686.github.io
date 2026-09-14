@@ -1,3 +1,7 @@
+import { getExperienceLabel } from "@/content/career";
+
+const experienceLabel = getExperienceLabel();
+
 export const profile = {
   name: "YungChun Tu",
   shortName: "Aaron",
@@ -8,12 +12,11 @@ export const profile = {
     alt: "Yung Chun Tu in Hiroshima",
   },
   headline: "I turn complex requirements into reliable, maintainable systems.",
-  summary:
-    "Backend-focused software engineer with more than nine years of experience across the .NET ecosystem, TypeScript, cloud automation, system modernization, and applied AI.",
+  summary: `Backend-focused software engineer with ${experienceLabel} of experience across the .NET ecosystem, TypeScript, cloud automation, system modernization, and applied AI.`,
   about:
     "I specialize in scalable API design, legacy modernization, data-intensive systems, test automation, and cloud operations. I enjoy translating ambiguous product needs into pragmatic systems that teams can operate and improve with confidence.",
   highlights: [
-    "9+ years in backend and full-stack engineering",
+    `${experienceLabel} in backend and full-stack engineering`,
     ".NET services, cloud automation, and applied AI",
     "Working across Mandarin, Japanese, and English",
   ],
