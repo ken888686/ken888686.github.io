@@ -24,19 +24,30 @@ function getFilePath(url) {
   const pathname = decodeURIComponent(
     new URL(url, "http://localhost").pathname,
   );
-  const requestedPath = pathname.endsWith("/")
-    ? `${pathname}index.html`
-    : pathname;
-  const filePath = resolve(outputDirectory, `.${requestedPath}`);
+  const pathWithoutTrailingSlash = pathname.replace(/\/$/, "");
+  const candidates = pathname.endsWith("/")
+    ? [`${pathname}index.html`, `${pathWithoutTrailingSlash}.html`]
+    : [pathname, `${pathname}.html`, `${pathname}/index.html`];
 
-  if (!filePath.startsWith(`${outputDirectory}${sep}`)) return null;
-  return filePath;
+  for (const candidate of candidates) {
+    const filePath = resolve(outputDirectory, `.${candidate}`);
+
+    if (
+      filePath.startsWith(`${outputDirectory}${sep}`) &&
+      existsSync(filePath) &&
+      statSync(filePath).isFile()
+    ) {
+      return filePath;
+    }
+  }
+
+  return null;
 }
 
 createServer((request, response) => {
   const filePath = getFilePath(request.url ?? "/");
 
-  if (!filePath || !existsSync(filePath) || !statSync(filePath).isFile()) {
+  if (!filePath) {
     response.writeHead(404, { "content-type": "text/plain; charset=utf-8" });
     response.end("Not found");
     return;
