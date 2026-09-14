@@ -148,11 +148,7 @@ function NavbarContent() {
               <Button
                 variant="ghost"
                 size="icon"
-                aria-label={
-                  mobileMenuOpen
-                    ? "Close navigation menu"
-                    : "Open navigation menu"
-                }
+                aria-label="Toggle navigation menu"
                 aria-expanded={mobileMenuOpen}
               >
                 <Menu aria-hidden="true" />

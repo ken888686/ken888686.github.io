@@ -16,6 +16,13 @@ export type Post = {
   content: string;
 };
 
+type FrontMatter = {
+  title?: string;
+  date?: string;
+  category?: string;
+  description?: string;
+};
+
 function getPostFilenames() {
   return readdirSync(postsDirectory)
     .filter((filename) => filename.endsWith(markdownExtension))
@@ -52,24 +59,43 @@ function createExcerpt(content: string) {
     : plainText;
 }
 
+function parseFrontMatter(source: string) {
+  const match = source.match(/^---\s*\n([\s\S]*?)\n---\s*(?:\n|$)/);
+  if (!match) return { metadata: {} satisfies FrontMatter, content: source };
+
+  const metadata = match[1].split("\n").reduce<FrontMatter>((result, line) => {
+    const field = line.match(/^(title|date|category|description):\s*(.*)$/);
+    if (!field) return result;
+
+    const value = field[2].trim().replace(/^("|')(.*)\1$/, "$2");
+    if (field[1] === "title") result.title = value;
+    if (field[1] === "date") result.date = value;
+    if (field[1] === "category") result.category = value;
+    if (field[1] === "description") result.description = value;
+    return result;
+  }, {});
+
+  return { metadata, content: source.slice(match[0].length).trim() };
+}
+
 function parsePost(filename: string): Post {
   const slug = filename.slice(0, -markdownExtension.length);
   const source = readFileSync(join(postsDirectory, filename), "utf8").trim();
-  const titleMatch = source.match(/^#\s+(.+)$/m);
-  const title = titleMatch?.[1]?.trim() ?? slug;
+  const { metadata, content: sourceContent } = parseFrontMatter(source);
+  const titleMatch = sourceContent.match(/^#\s+(.+)$/m);
+  const title = metadata.title ?? titleMatch?.[1]?.trim() ?? slug;
   const content = titleMatch
-    ? source.replace(titleMatch[0], "").trim()
-    : source;
+    ? sourceContent.replace(titleMatch[0], "").trim()
+    : sourceContent;
   const dateMatch = slug.match(/^(\d{4}-\d{2}-\d{2})/);
+  const date = metadata.date ?? dateMatch?.[1] ?? "";
 
   return {
     slug,
     title,
-    date: dateMatch?.[1] ?? "",
-    category:
-      blogConfig.categories[slug as keyof typeof blogConfig.categories] ??
-      "Notes",
-    excerpt: createExcerpt(content),
+    date,
+    category: metadata.category ?? "Notes",
+    excerpt: metadata.description ?? createExcerpt(content),
     content,
   };
 }

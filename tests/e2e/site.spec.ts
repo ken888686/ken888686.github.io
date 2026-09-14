@@ -33,6 +33,10 @@ test.describe("portfolio navigation", () => {
       "content",
       "article",
     );
+    await expect(page.locator('meta[name="description"]')).toHaveAttribute(
+      "content",
+      "Notes from learning Next.js App Router as a backend-focused engineer.",
+    );
   });
 });
 
@@ -56,6 +60,29 @@ test.describe("homepage responsive behavior", () => {
         document.documentElement.clientWidth,
     );
     expect(hasHorizontalOverflow).toBe(false);
+  });
+});
+
+test.describe("mobile navigation", () => {
+  test("opens and closes the navigation menu", async ({ page }, testInfo) => {
+    test.skip(testInfo.project.name !== "mobile-chrome", "mobile-only check");
+
+    await page.goto("/");
+    const menuButton = page.locator(
+      'button[aria-label="Toggle navigation menu"]',
+    );
+
+    await expect(menuButton).toHaveAttribute("aria-expanded", "false");
+    await menuButton.click();
+
+    await expect(menuButton).toHaveAttribute("aria-expanded", "true");
+    await expect(page.getByRole("link", { name: "Experience" })).toBeVisible();
+
+    await page.getByRole("link", { name: "Blog" }).click();
+    await expect(page).toHaveURL(/\/blog\/?$/);
+    await expect(
+      page.getByRole("button", { name: "Toggle navigation menu" }),
+    ).toHaveAttribute("aria-expanded", "false");
   });
 });
 

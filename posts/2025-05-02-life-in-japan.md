@@ -1,3 +1,10 @@
+---
+title: 🚀 Thoughts on Life: From Hungry & Foolish to The Quest for Spark
+date: 2025-05-02
+category: Reflection
+description: A reflection on fading motivation, work, technology, and finding a new spark.
+---
+
 # 🚀 Thoughts on Life: From Hungry & Foolish to The Quest for Spark
 
 > Steve Jobs: "Stay Hungry, Stay Foolish."
