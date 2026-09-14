@@ -1,4 +1,5 @@
 import { Badge } from "@/components/ui/badge";
+import { MotionReveal } from "@/components/motion-reveal";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { projects } from "@/content/projects";
 import {
@@ -35,53 +36,53 @@ export default function Projects() {
       </header>
 
       <div className="grid gap-6 md:grid-cols-2">
-        {projects.map((project) => {
+        {projects.map((project, index) => {
           const ProjectIcon = projectIcons[project.id] ?? PanelsTopLeft;
 
           return (
-            <Card
-              key={project.id}
-              className="group border-primary/15 flex h-full flex-col hover:-translate-y-1 hover:shadow-lg"
-            >
-              <CardHeader>
-                <ProjectIcon
-                  className="text-primary mb-3 transition-transform duration-300 group-hover:scale-110"
-                  size={28}
-                  aria-hidden="true"
-                />
-                <CardTitle className="text-xl leading-snug">
-                  {project.title}
-                </CardTitle>
-                <p className="text-muted-foreground text-sm">
-                  {project.subtitle}
-                </p>
-              </CardHeader>
-              <CardContent className="flex grow flex-col gap-5">
-                <p className="text-muted-foreground leading-relaxed">
-                  {project.summary}
-                </p>
-                <ul className="list-disc space-y-2 pl-5 text-sm leading-relaxed">
-                  {project.highlights.map((highlight) => (
-                    <li key={highlight}>{highlight}</li>
-                  ))}
-                </ul>
-                <div className="flex flex-wrap gap-2">
-                  {project.technologies.map((technology) => (
-                    <Badge key={technology} variant="secondary">
-                      {technology}
-                    </Badge>
-                  ))}
-                </div>
-                <Link
-                  href={project.repositoryUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-primary mt-auto inline-flex w-fit items-center gap-1 font-medium underline underline-offset-4"
-                >
-                  View repository <ArrowUpRight size={16} aria-hidden="true" />
-                </Link>
-              </CardContent>
-            </Card>
+            <MotionReveal key={project.id} delay={index * 0.08}>
+              <Card className="group border-primary/15 flex h-full flex-col hover:-translate-y-1 hover:shadow-lg">
+                <CardHeader>
+                  <ProjectIcon
+                    className="text-primary mb-3 transition-transform duration-300 group-hover:scale-110"
+                    size={28}
+                    aria-hidden="true"
+                  />
+                  <CardTitle className="text-xl leading-snug">
+                    {project.title}
+                  </CardTitle>
+                  <p className="text-muted-foreground text-sm">
+                    {project.subtitle}
+                  </p>
+                </CardHeader>
+                <CardContent className="flex grow flex-col gap-5">
+                  <p className="text-muted-foreground leading-relaxed">
+                    {project.summary}
+                  </p>
+                  <ul className="list-disc space-y-2 pl-5 text-sm leading-relaxed">
+                    {project.highlights.map((highlight) => (
+                      <li key={highlight}>{highlight}</li>
+                    ))}
+                  </ul>
+                  <div className="flex flex-wrap gap-2">
+                    {project.technologies.map((technology) => (
+                      <Badge key={technology} variant="secondary">
+                        {technology}
+                      </Badge>
+                    ))}
+                  </div>
+                  <Link
+                    href={project.repositoryUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-primary mt-auto inline-flex w-fit items-center gap-1 font-medium underline underline-offset-4"
+                  >
+                    View repository{" "}
+                    <ArrowUpRight size={16} aria-hidden="true" />
+                  </Link>
+                </CardContent>
+              </Card>
+            </MotionReveal>
           );
         })}
       </div>

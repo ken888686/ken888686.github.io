@@ -1,4 +1,5 @@
 import { Badge } from "@/components/ui/badge";
+import { MotionReveal } from "@/components/motion-reveal";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { experiences } from "@/content/experience";
 import type { Metadata } from "next";
@@ -30,38 +31,42 @@ export default function Experience() {
       </header>
 
       <ol className="border-primary/25 relative space-y-7 border-l pl-6 md:pl-8">
-        {featuredExperiences.map((experience) => (
+        {featuredExperiences.map((experience, index) => (
           <li key={experience.id} className="relative">
             <span className="border-background bg-primary absolute top-7 -left-[1.95rem] h-3 w-3 rounded-full border-2 shadow-[0_0_0_4px_color-mix(in_oklch,_var(--primary)_15%,_transparent)] md:-left-[2.45rem]" />
-            <Card className="border-primary/15 hover:-translate-y-0.5 hover:shadow-md">
-              <CardHeader className="gap-2">
-                <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
-                  <div>
-                    <CardTitle className="text-xl">{experience.role}</CardTitle>
-                    <p className="text-muted-foreground mt-1">
-                      {experience.company}
-                    </p>
-                  </div>
-                  <Badge variant="outline" className="w-fit shrink-0">
-                    {experience.period}
-                  </Badge>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <ul className="list-disc space-y-2 pl-5 text-sm leading-relaxed">
-                  {experience.highlights.map((highlight) => (
-                    <li key={highlight}>{highlight}</li>
-                  ))}
-                </ul>
-                <div className="mt-5 flex flex-wrap gap-2">
-                  {experience.technologies.map((technology) => (
-                    <Badge key={technology} variant="secondary">
-                      {technology}
+            <MotionReveal delay={index * 0.08}>
+              <Card className="border-primary/15 hover:-translate-y-0.5 hover:shadow-md">
+                <CardHeader className="gap-2">
+                  <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+                    <div>
+                      <CardTitle className="text-xl">
+                        {experience.role}
+                      </CardTitle>
+                      <p className="text-muted-foreground mt-1">
+                        {experience.company}
+                      </p>
+                    </div>
+                    <Badge variant="outline" className="w-fit shrink-0">
+                      {experience.period}
                     </Badge>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <ul className="list-disc space-y-2 pl-5 text-sm leading-relaxed">
+                    {experience.highlights.map((highlight) => (
+                      <li key={highlight}>{highlight}</li>
+                    ))}
+                  </ul>
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {experience.technologies.map((technology) => (
+                      <Badge key={technology} variant="secondary">
+                        {technology}
+                      </Badge>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </MotionReveal>
           </li>
         ))}
       </ol>
